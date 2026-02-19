@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Header · Logo + nav + sign in/log in</title>
+  <!-- Font Awesome 6 (for optional icons) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #f4f7fb;
+      font-family:
+        "Inter",
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Roboto,
+        sans-serif;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    /* ===== HEADER DESIGN (exactly as described: Logo | Home About Us Service Blog | Sign in  Log in) ===== */
+    .site-header {
+      background: #ffffff;
+      box-shadow: 0 8px 20px -12px rgba(30, 43, 79, 0.15);
+      padding: 0.8rem 2rem;
+      border-bottom: 3px solid #e0c737; /* brand sun accent */
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem 2rem;
+    }
+
+    /* logo */
+    .logo-area {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .logo-icon {
+      font-size: 2.2rem;
+      color: #54b9e8; /* brand sky */
+      filter: drop-shadow(0 2px 4px rgba(84,185,232,0.3));
+    }
+    .logo-text {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #1e2b4f; /* deep navy */
+      letter-spacing: -0.02em;
+    }
+    .logo-text span {
+      color: #e0c737; /* brand sun */
+      font-weight: 300;
+    }
+
+    /* navigation links (Home, About Us, Service, Blog) */
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2.5rem;
+      flex-wrap: wrap;
+    }
+    .nav-links a {
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 1.1rem;
+      color: #1e2b4f;
+      padding-bottom: 0.3rem;
+      border-bottom: 2px solid transparent;
+      transition: 0.15s;
+    }
+    .nav-links a:hover {
+      border-bottom-color: #54b9e8;
+      color: #1e2b4f;
+    }
+
+    /* sign in / log in group (exactly as text) */
+    .auth-group {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-weight: 600;
+    }
+    .auth-link {
+      text-decoration: none;
+      color: #1e2b4f;
+      padding: 0.5rem 1.2rem;
+      border-radius: 60px;
+      transition: 0.15s;
+      font-size: 1rem;
+      border: 2px solid transparent;
+    }
+    .auth-link.signin {
+      background: transparent;
+      border: 2px solid #54b9e8;
+      color: #1e2b4f;
+    }
+    .auth-link.signin:hover {
+      background: #e0c737;
+      border-color: #e0c737;
+      color: #1e2b4f;
+    }
+    .auth-link.login {
+      background: #1e2b4f;
+      color: white;
+      box-shadow: 0 4px 10px -4px rgba(30,43,79,0.3);
+    }
+    .auth-link.login:hover {
+      background: #54b9e8;
+      color: #1e2b4f;
+    }
+
+    /* optional divider (just a faint line) */
+    .auth-divider {
+      color: #c0d0e5;
+      font-weight: 400;
+    }
+
+    /* responsive behavior */
+    @media (max-width: 800px) {
+      .site-header {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 1.2rem;
+      }
+      .logo-area {
+        justify-content: center;
+      }
+      .nav-links {
+        justify-content: center;
+        gap: 1.8rem;
+      }
+      .auth-group {
+        justify-content: center;
+      }
+    }
+    @media (max-width: 480px) {
+      .nav-links {
+        gap: 1rem;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      .auth-group {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+    }
+
+    /* dummy content below header (just to show layout) */
+    .page-content {
+      flex: 1;
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 1rem 2rem;
+    }
+    .page-content h2 {
+      color: #1e2b4f;
+      font-size: 2rem;
+    }
+    .page-content p {
+      color: #5f6c84;
+      margin-top: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <!-- header – exactly as described: Logo | Home About Us Service Blog | Sign in  Log in -->
+  <header class="site-header">
+    <!-- Logo (icon + text) -->
+    <div class="logo-area">
+      <i class="fas fa-microchip logo-icon"></i>  <!-- represents logo -->
+      <div class="logo-text">CodeWithMinu.<span>NextGen</span></div>
+    </div>
+
+    <!-- navigation links -->
+    <nav class="nav-links">
+      <a href="#">Home</a>
+      <a href="#">About Us</a>
+      <a href="#">Service</a>
+      <a href="#">Blog</a>
+    </nav>
+
+    <!-- sign in / log in buttons (exact text) -->
+    <div class="auth-group">
+      <a href="#" class="auth-link signin">Sign in</a>
+      <span class="auth-divider"></span>
+      <a href="#" class="auth-link login">Log in</a>
+    </div>
+  </header>
+
+  <!-- dummy page content (to show header above) -->
+  <div class="page-content">
+    <h2>Header design preview</h2>
+    <p>This is the exact layout you requested: <strong>Logo</strong> on the left, navigation (Home, About Us, Service, Blog) in the center, and <strong>Sign in / Log in</strong> buttons on the right. The colors follow the brand theme: sky blue (#54b9e8), gold (#e0c737), and deep navy (#1e2b4f). Fully responsive.</p>
+  </div>
+</body>
+</html>
