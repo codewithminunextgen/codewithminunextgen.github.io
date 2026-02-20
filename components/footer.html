@@ -1,85 +1,457 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=5.0"
+    />
+    <title>Header · different logos mobile/desktop + three‑line menu</title>
+    <!-- Font Awesome 6 -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
 
-  <!-- Font Awesome 6 -->
-  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" /> -->
- 
+      body {
+        background: #f4f7fb;
+        font-family:
+          "Inter",
+          system-ui,
+          -apple-system,
+          BlinkMacSystemFont,
+          "Segoe UI",
+          Roboto,
+          sans-serif;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+      }
 
-  <!-- demo page content (just to show footer below) -->
-  <!-- <div class="page-content">
-    <h1>CodeWithMinu.<span>NextGen</span></h1>
-    <p>Modern IT services & next‑gen tutorials. Scroll down to see the attractive footer designed with your brand colours — sky blue, sun gold, and deep navy.</p>
-  </div> -->
+      :root {
+        --brand-sky: #54b9e8;
+        --brand-sun: #e0c737;
+        --deep-navy: #1e2b4f;
+        --soft-white: #ffffff;
+        --gray-soft: #5f6c84;
+      }
 
-  <!-- attractive footer – brand theme exactly as requested -->
-  <footer class="brand-footer">
-    <div class="footer-container">
-      <!-- column 1: logo + about + social -->
-      <div class="footer-col">
-        <div class="footer-logo">
-          <i class="fas fa-microchip"></i>
-          <h2>CodeWithMinu.<span>NextGen</span></h2>
+      /* dummy page content to show footer in context */
+      .page-content {
+        flex: 1;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 3rem 2rem;
+        color: var(--deep-navy);
+      }
+      .page-content h1 {
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: var(--deep-navy);
+      }
+      .page-content h1 span {
+        color: var(--brand-sky);
+        position: relative;
+      }
+      .page-content h1 span::after {
+        content: "";
+        position: absolute;
+        bottom: 5px;
+        left: 0;
+        width: 100%;
+        height: 10px;
+        background: rgba(224, 199, 55, 0.2);
+        border-radius: 20px;
+        z-index: -1;
+      }
+      .page-content p {
+        font-size: 1.1rem;
+        color: var(--gray-soft);
+        margin-top: 1rem;
+        max-width: 700px;
+      }
+
+      /* ===== FOOTER DESIGN (brand theme: sky, sun, navy) ===== */
+      .brand-footer {
+        background: var(--deep-navy); /* deep navy base */
+        color: #d6e3f5;
+        padding: 4rem 2rem 2rem;
+        border-top: 6px solid var(--brand-sun);
+        box-shadow: 0 -20px 30px -10px rgba(0, 0, 0, 0.15);
+      }
+
+      .footer-container {
+        max-width: 1300px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 2fr 1fr 1.5fr 1.8fr;
+        gap: 2.5rem 2rem;
+        align-items: start;
+      }
+
+      /* column 1 – logo + about */
+      .footer-col:first-child .footer-logo {
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+        margin-bottom: 1.2rem;
+      }
+
+       .logo-card {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      padding: 0.2rem 1.2rem 0.2rem 0.6rem;
+      border-radius: 60px;
+      background: #ffffff;
+      border: 1.5px solid transparent;
+      background: linear-gradient(white, white) padding-box,
+                  linear-gradient(120deg, var(--brand-sky), var(--brand-sun)) border-box;
+      height: 68px;
+      box-shadow: 0 6px 12px rgba(84,185,232,0.12);
+    }
+     .studio-logo-img {
+      height: 160px;
+      width: 174px;
+      margin-top: 24px;
+      filter: drop-shadow(0 6px 10px rgba(84,185,232,0.2));
+      transition: transform 0.2s;
+    }
+     .studio-logo-img:hover {
+      transform: scale(1.02) rotate(-0.5deg);
+    }
+      .footer-logo i {
+        font-size: 2.5rem;
+        color: var(--brand-sun);
+        background: rgba(255, 255, 255, 0.05);
+        padding: 0.6rem;
+        border-radius: 18px;
+        border: 1px solid rgba(84, 185, 232, 0.3);
+      }
+      .footer-logo h2 {
+        font-size: 2rem;
+        font-weight: 800;
+        color: white;
+        letter-spacing: -0.02em;
+      }
+      .footer-logo h2 span {
+        color: var(--brand-sky);
+        font-weight: 300;
+      }
+      .footer-about {
+        color: #b4c9e8;
+        line-height: 1.6;
+        margin-bottom: 1.5rem;
+        font-size: 0.98rem;
+        padding-right: 1rem;
+      }
+      .social-links {
+        display: flex;
+        gap: 1rem;
+      }
+      .social-links a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 44px;
+        height: 44px;
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 50%;
+        color: var(--brand-sun);
+        font-size: 1.3rem;
+        transition: 0.25s;
+        border: 1px solid rgba(84, 185, 232, 0.2);
+        text-decoration: none;
+      }
+      .social-links a:hover {
+        background: var(--brand-sky);
+        color: var(--deep-navy);
+        border-color: var(--brand-sun);
+        transform: translateY(-4px);
+      }
+
+      /* column headers */
+      .footer-col h4 {
+        font-size: 1.4rem;
+        font-weight: 600;
+        color: white;
+        margin-bottom: 1.5rem;
+        position: relative;
+        padding-bottom: 0.6rem;
+      }
+      .footer-col h4::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 50px;
+        height: 3px;
+        background: linear-gradient(90deg, var(--brand-sky), var(--brand-sun));
+        border-radius: 4px;
+      }
+
+      /* quick links list */
+      .footer-col ul {
+        list-style: none;
+      }
+      .footer-col ul li {
+        margin-bottom: 0.8rem;
+      }
+      .footer-col ul li a {
+        color: #b4c9e8;
+        text-decoration: none;
+        transition: 0.15s;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+      .footer-col ul li a:hover {
+        color: var(--brand-sky);
+        transform: translateX(6px);
+      }
+      .footer-col ul li a i {
+        color: var(--brand-sun);
+        font-size: 0.75rem;
+      }
+
+      /* contact column */
+      .contact-details {
+        list-style: none;
+      }
+      .contact-details li {
+        display: flex;
+        gap: 1rem;
+        margin-bottom: 1.2rem;
+        align-items: flex-start;
+      }
+      .contact-details li i {
+        width: 24px;
+        color: var(--brand-sun);
+        font-size: 1.2rem;
+        margin-top: 3px;
+      }
+      .contact-details li span,
+      .contact-details li a {
+        color: #b4c9e8;
+        text-decoration: none;
+        line-height: 1.5;
+      }
+      .contact-details li a:hover {
+        color: var(--brand-sky);
+      }
+
+      /* newsletter column */
+      .newsletter-col p {
+        color: #b4c9e8;
+        margin: 0 0 1.2rem;
+        line-height: 1.5;
+      }
+      .newsletter-form {
+        display: flex;
+        max-width: 320px;
+        border-radius: 60px;
+        overflow: hidden;
+        border: 1px solid #2f4570;
+        background: #13203b;
+        margin-bottom: 1.8rem;
+      }
+      .newsletter-form input {
+        flex: 1;
+        padding: 1rem 1.2rem;
+        border: none;
+        background: transparent;
+        color: white;
+        font-size: 0.95rem;
+        outline: none;
+      }
+      .newsletter-form input::placeholder {
+        color: #6f88b0;
+      }
+      .newsletter-form button {
+        background: var(--brand-sun);
+        border: none;
+        padding: 0 1.8rem;
+        font-weight: 600;
+        color: var(--deep-navy);
+        cursor: pointer;
+        transition: 0.2s;
+        display: flex;
+        align-items: center;
+        gap: 0.4rem;
+        font-size: 1rem;
+        white-space: nowrap;
+      }
+      .newsletter-form button:hover {
+        background: var(--brand-sky);
+        color: var(--deep-navy);
+      }
+
+      /* footer bottom */
+      .footer-bottom {
+        max-width: 1300px;
+        margin: 3rem auto 0;
+        padding-top: 2rem;
+        border-top: 1px solid #253a5a;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 1rem;
+        color: #8fa6cc;
+        font-size: 0.95rem;
+      }
+      .footer-bottom a {
+        color: var(--brand-sun);
+        text-decoration: none;
+        font-weight: 500;
+        transition: 0.15s;
+      }
+      .footer-bottom a:hover {
+        color: var(--brand-sky);
+      }
+      .footer-bottom i {
+        color: var(--brand-sun);
+        margin: 0 0.3rem;
+      }
+
+      /* responsive */
+      @media (max-width: 1000px) {
+        .footer-container {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+      @media (max-width: 600px) {
+        .footer-container {
+          grid-template-columns: 1fr;
+        }
+        .footer-bottom {
+          flex-direction: column;
+          text-align: center;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- attractive footer – brand theme exactly as requested -->
+    <footer class="brand-footer">
+      <div class="footer-container">
+        <!-- column 1: logo + about + social -->
+        <div class="footer-col">
+          <div class="footer-logo">
+            <div class="logo-card studio-logo">
+              <!-- desktop logo image (your main logo) -->
+              <img
+                src="../images/logo1.png"
+                alt="CodeWithMinu Desktop Logo"
+                class="studio-logo-img"
+                style="object-fit: contain"
+                loading="lazy"
+              />
+            </div>
+          </div>
+          <div class="footer-about">
+            Modern technology platform delivering innovative IT solutions and
+            high‑quality programming tutorials for the next generation of
+            developers and businesses.
+          </div>
+          <div class="social-links">
+            <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="#" aria-label="LinkedIn"
+              ><i class="fab fa-linkedin-in"></i
+            ></a>
+            <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+          </div>
         </div>
-        <div class="footer-about">
-          Modern technology platform delivering innovative IT solutions and high‑quality programming tutorials for the next generation of developers and businesses.
+
+        <!-- column 2: quick links (services / learn) -->
+        <div class="footer-col">
+          <h4>Explore</h4>
+          <ul>
+            <li>
+              <a href="#"
+                ><i class="fas fa-chevron-right"></i> Web Development</a
+              >
+            </li>
+            <li>
+              <a href="#"><i class="fas fa-chevron-right"></i> Mobile Apps</a>
+            </li>
+            <li>
+              <a href="#"><i class="fas fa-chevron-right"></i> Blockchain</a>
+            </li>
+            <li>
+              <a href="#"
+                ><i class="fas fa-chevron-right"></i> Cloud Solutions</a
+              >
+            </li>
+            <li>
+              <a href="#"><i class="fas fa-chevron-right"></i> UI/UX Design</a>
+            </li>
+            <li>
+              <a href="#"
+                ><i class="fas fa-chevron-right"></i> Next.js Tutorials</a
+              >
+            </li>
+          </ul>
         </div>
-        <div class="social-links">
-          <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
-          <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-          <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-          <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+
+        <!-- column 3: contact information (address, phone, email) -->
+        <div class="footer-col">
+          <h4>Get in touch</h4>
+          <ul class="contact-details">
+            <li>
+              <i class="fas fa-map-pin"></i>
+              <span
+                >3015 Grand Ave, Coconut Grove,<br />Merrick Way, FL 12345</span
+              >
+            </li>
+            <li>
+              <i class="fas fa-phone-alt"></i>
+              <a href="tel:+123456789">+123-456-789</a>
+            </li>
+            <li>
+              <i class="fas fa-envelope"></i>
+              <a href="mailto:hello@codewithminu.dev">hello@codewithminu.dev</a>
+            </li>
+            <li>
+              <i class="fas fa-clock"></i>
+              <span>Mon–Fri, 9am – 6pm</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- column 4: newsletter + stay updated -->
+        <div class="footer-col newsletter-col">
+          <h4>Remain Updated</h4>
+          <p>
+            Get latest tutorials, IT insights and offers straight to your inbox.
+          </p>
+          <div class="newsletter-form">
+            <input type="email" placeholder="Your email address" />
+            <button type="submit">
+              Sign up <i class="fas fa-paper-plane"></i>
+            </button>
+          </div>
+          <p style="font-size: 0.85rem; color: #6f88b0">
+            <i class="fas fa-shield-alt"></i> No spam, only next‑gen content.
+          </p>
         </div>
       </div>
 
-      <!-- column 2: quick links (services / learn) -->
-      <div class="footer-col">
-        <h4>Explore</h4>
-        <ul>
-          <li><a href="#"><i class="fas fa-chevron-right"></i> Web Development</a></li>
-          <li><a href="#"><i class="fas fa-chevron-right"></i> Mobile Apps</a></li>
-          <li><a href="#"><i class="fas fa-chevron-right"></i> Blockchain</a></li>
-          <li><a href="#"><i class="fas fa-chevron-right"></i> Cloud Solutions</a></li>
-          <li><a href="#"><i class="fas fa-chevron-right"></i> UI/UX Design</a></li>
-          <li><a href="#"><i class="fas fa-chevron-right"></i> Next.js Tutorials</a></li>
-        </ul>
-      </div>
-
-      <!-- column 3: contact information (address, phone, email) -->
-      <div class="footer-col">
-        <h4>Get in touch</h4>
-        <ul class="contact-details">
-          <li>
-            <i class="fas fa-map-pin"></i>
-            <span>3015 Grand Ave, Coconut Grove,<br />Merrick Way, FL 12345</span>
-          </li>
-          <li>
-            <i class="fas fa-phone-alt"></i>
-            <a href="tel:+123456789">+123-456-789</a>
-          </li>
-          <li>
-            <i class="fas fa-envelope"></i>
-            <a href="mailto:hello@codewithminu.dev">hello@codewithminu.dev</a>
-          </li>
-          <li>
-            <i class="fas fa-clock"></i>
-            <span>Mon–Fri, 9am – 6pm</span>
-          </li>
-        </ul>
-      </div>
-
-      <!-- column 4: newsletter + stay updated -->
-      <div class="footer-col newsletter-col">
-        <h4>Remain Updated</h4>
-        <p>Get latest tutorials, IT insights and offers straight to your inbox.</p>
-        <div class="newsletter-form">
-          <input type="email" placeholder="Your email address" />
-          <button type="submit">Sign up <i class="fas fa-paper-plane"></i></button>
+      <!-- bottom copyright + design credit (exactly as requested style) -->
+      <div class="footer-bottom">
+        <div>© 2025 CodeWithMinu.NextGen. All rights reserved.</div>
+        <div>
+          Designed with <i class="fas fa-heart" style="color: #e0c737"></i> by
+          <a href="#">Inspiriy Themes</a> & <a href="#">Studio Shodwe</a>
         </div>
-        <p style="font-size:0.85rem; color:#6f88b0;"><i class="fas fa-shield-alt"></i> No spam, only next‑gen content.</p>
       </div>
-    </div>
-
-    <!-- bottom copyright + design credit (exactly as requested style) -->
-    <div class="footer-bottom">
-      <div>© 2025 CodeWithMinu.NextGen. All rights reserved.</div>
-      <div>Designed with <i class="fas fa-heart" style="color: #e0c737;"></i> by <a href="#">Inspiriy Themes</a> & <a href="#">Studio Shodwe</a></div>
-    </div>
-  </footer>
+    </footer>
+  </body>
+</html>
