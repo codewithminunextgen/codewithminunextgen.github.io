@@ -3,104 +3,71 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
-  <title>Header · different logos mobile/desktop + three‑line menu</title>
+  <title>CodeWithMinu.NextGen</title>
   <!-- Font Awesome 6 -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
   <style>
+
     * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      background: #f4f7fb;
-      font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
-    }
-
-    :root {
-      --brand-sky: #54b9e8;
-      --brand-sun: #e0c737;
-      --deep-navy: #1e2b4f;
-      --soft-white: #ffffff;
-      --gray-soft: #5f6c84;
-      --header-shadow: 0 10px 25px -12px rgba(30, 43, 79, 0.2);
-    }
-
-    .site-header {
-      background: rgba(255, 255, 255, 0.95);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
-      box-shadow: var(--header-shadow);
-      padding: 0.5rem 2rem;
-      border-bottom: 4px solid var(--brand-sun);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 1rem 1.5rem;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
     
-      top: 0;
-      z-index: 1000;
-      position: relative;
+/* ===== NAVBAR ===== */
+.navbar {
+    width: 90%;
+    padding: 18px 35px;
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 6px 18px #54b9e8, 0 0 0 1px #e0c737;
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    animation: navbarSlide 0.8s ease;
+}
 
-    margin-top: -40px;
+@keyframes navbarSlide {
+    0% {
+        top: -100px;
+        opacity: 0;
     }
+    100% {
+        top: 20px;
+        opacity: 1;
+    }
+}
 
-    /* ===== LOGO AREA - both logos inside, toggled via media query ===== */
-    .logo-area {
-      display: flex;
-      align-items: center;
-    }
+.logo {
+    font-size: 24px;
+    font-weight: 700;
+    background: linear-gradient(135deg, #1b2a7a, #6a5acd);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    position: relative;
+    padding-left: 35px;
+}
 
-    /* desktop logo (visible by default) */
-    .desktop-logo {
-      display: flex;
-    }
-    .desktop-logo .logo-card {
-      display: flex;
-      align-items: center;
-      gap: 0.7rem;
-      padding: 0.2rem 1.2rem 0.2rem 0.6rem;
-      border-radius: 60px;
-      background: #ffffff;
-      border: 1.5px solid transparent;
-      background: linear-gradient(white, white) padding-box,
-                  linear-gradient(120deg, var(--brand-sky), var(--brand-sun)) border-box;
-      height: 68px;
-      box-shadow: 0 6px 12px rgba(84,185,232,0.12);
-    }
-    .desktop-logo .studio-logo-img {
-      height: 160px;
-      width: 174px;
-      margin-top: 24px;
-      filter: drop-shadow(0 6px 10px rgba(84,185,232,0.2));
-      transition: transform 0.2s;
-    }
-    .desktop-logo .studio-logo-img:hover {
-      transform: scale(1.02) rotate(-0.5deg);
-    }
+.logo::before {
+    content: "●";
+    position: absolute;
+    left: 0;
+    color: #6a5acd;
+    font-size: 30px;
+    animation: pulse 2s infinite;
+}
 
-    /* mobile logo (hidden by default) */
-    .mobile-logo {
-      display: none;
-    }
-    .mobile-logo .logo-card {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.2rem 1rem 0.2rem 0.5rem;
-      border-radius: 50px;
-      background: #ffffff;
-      border: 1.5px solid transparent;
-      background: linear-gradient(white, white) padding-box,
-                  linear-gradient(120deg, var(--brand-sky), var(--brand-sun)) border-box;
-      height: 52px;
-    }
-   .mobile-logo .mobile-logo-img {
+.mobile-logo-img {
     height: 45px;
     width: auto;
     max-width: 120px;
@@ -110,325 +77,228 @@
     padding: 2px 2px;
     margin-left: 5px;
     }
-    .mobile-logo .logo-text {
-      font-size: 1.3rem;
-      font-weight: 700;
-      color: var(--deep-navy);
-      white-space: nowrap;
-    }
-    .mobile-logo .logo-text span {
-      color: var(--brand-sun);
-    }
 
-    /* desktop navigation */
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 2.2rem;
-      flex-wrap: wrap;
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+        transform: scale(1);
     }
-    .nav-links a {
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 1.1rem;
-      color: var(--deep-navy);
-      padding-bottom: 0.3rem;
-      border-bottom: 2px solid transparent;
-      transition: 0.15s;
+    50% {
+        opacity: 0.7;
+        transform: scale(1.2);
     }
-    .nav-links a:hover {
-      border-bottom-color: var(--brand-sky);
-    }
+}
 
-    /* auth group desktop */
-    .auth-group {
-      display: flex;
-      align-items: center;
-      gap: 0.8rem;
-      flex-shrink: 0;
-    }
-    .auth-link {
-      text-decoration: none;
-      font-weight: 600;
-      padding: 0.5rem 1.5rem;
-      border-radius: 40px;
-      transition: 0.18s;
-      font-size: 1rem;
-      border: 2px solid transparent;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.3rem;
-    }
-    .auth-link.signin {
-      background: transparent;
-      border: 2px solid var(--brand-sky);
-      color: var(--deep-navy);
-    }
-    .auth-link.signin:hover {
-      background: var(--brand-sun);
-      border-color: var(--brand-sun);
-      transform: translateY(-2px);
-      box-shadow: 0 8px 12px -8px var(--brand-sun);
-    }
-    .auth-link.login {
-      background: var(--deep-navy);
-      color: white;
-      box-shadow: 0 6px 12px -6px var(--deep-navy);
-    }
-    .auth-link.login:hover {
-      background: var(--brand-sky);
-      color: var(--deep-navy);
-      transform: translateY(-2px);
-      box-shadow: 0 8px 14px -8px var(--brand-sky);
-    }
-    .auth-divider {
-      width: 4px;
-      height: 4px;
-      background: #cbd6e6;
-      border-radius: 50%;
-      display: inline-block;
-    }
+.nav-links a {
+    margin: 0 22px;
+    text-decoration: none;
+    color: #1b2a7a;
+    font-weight: 500;
+    position: relative;
+    transition: 0.3s;
+    padding: 5px 0;
+}
 
-    /* mobile menu toggle */
-    .mobile-menu-toggle {
-      display: none;
-      font-size: 2rem;
-      color: var(--deep-navy);
-      background: transparent;
-      border: none;
-      cursor: pointer;
-      width: 48px;
-      height: 48px;
-      border-radius: 50%;
-      align-items: center;
-      justify-content: center;
-    }
-    .mobile-menu-toggle:hover {
-      background: rgba(84,185,232,0.1);
-      color: var(--brand-sky);
-    }
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%) scaleX(0);
+    width: 80%;
+    height: 2px;
+    background: linear-gradient(90deg, #1b2a7a, #6a5acd);
+    transition: 0.3s;
+}
 
-    /* mobile navigation panel */
-    .mobile-nav {
-      display: none;
-      width: 100%;
-      flex-direction: column;
-      background: white;
-      border-radius: 2rem;
-      padding: 1.5rem 1rem;
-      margin-top: 0.5rem;
-      box-shadow: 0 15px 30px -12px rgba(30,43,79,0.2);
-      border: 1px solid rgba(84,185,232,0.2);
-    }
+.nav-links a:hover {
+    color: #6a5acd;
+}
 
-    .mobile-nav a {
-      text-decoration: none;
-      color: var(--deep-navy);
-      font-weight: 600;
-      padding: 1rem 1.2rem;
-      border-radius: 2rem;
-      font-size: 1.2rem;
-      transition: 0.15s;
-      display: flex;
-      align-items: center;
-      gap: 0.8rem;
-    }
-    .mobile-nav a i {
-      width: 1.8rem;
-      color: var(--brand-sky);
-    }
-    .mobile-nav a:hover {
-      background: rgba(224,199,55,0.1);
-      transform: translateX(6px);
-    }
+.nav-links a:hover::after {
+    transform: translateX(-50%) scaleX(1);
+}
 
-    .mobile-auth {
-      display: flex;
-      gap: 0.8rem;
-      margin-top: 1.2rem;
-      padding: 0 0.5rem;
-    }
-    .mobile-auth .auth-link {
-      flex: 1;
-      text-align: center;
-      justify-content: center;
-    }
+.nav-buttons button {
+       margin-left: 15px;
+    padding: 12px 28px;
+    border-radius: 30px;
+    border: 2px;
+    border-color: #e0c737;
+    cursor: pointer;
+    font-weight: 500;
+    transition: 0.3s;
+    box-shadow: 0 2px 1px #e0c737;
+}
 
-    /* ===== MEDIA QUERY FOR PHONE ===== */
-    @media (max-width: 768px) {
-      .site-header {
-        padding: 0.5rem 1.2rem;
-      }
+.login-btn {
+    background: #f1f3f8;
+    color: #1b2a7a;
+    border: 1px solid transparent;
+}
 
-      /* switch logos: hide desktop, show mobile */
-      .desktop-logo {
-        display: none;
-      }
-      .mobile-logo {
-        display: flex;
-      }
+.login-btn:hover {
+    background: white;
+    border-color: #6a5acd;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(106, 90, 205, 0.2);
+}
 
-      /* hide desktop nav & auth */
-      .nav-links {
-        display: none;
-      }
-      .auth-group {
-        display: none;
-      }
+.start-btn {
+    background: linear-gradient(135deg, #1b2a7a, #4b3db2);
+    color: white;
+    position: relative;
+    overflow: hidden;
+}
 
-      /* show hamburger */
-      .mobile-menu-toggle {
-        display: flex;
-      }
+.start-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: 0.5s;
+}
 
-      /* mobile nav open state */
-      .mobile-nav.open {
-        display: flex;
-      }
-    }
+.start-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 30px rgba(27, 42, 122, 0.3);
+}
 
-    /* small phones */
-    @media (max-width: 480px) {
-      .mobile-logo .logo-card {
-        height: 46px;
-        padding: 0.2rem 0.8rem;
-      }
-      .mobile-logo .mobile-logo-img {
-        height: 38px;
-      }
-      .mobile-logo .logo-text {
-        font-size: 1.1rem;
-      }
-      .mobile-menu-toggle {
-        font-size: 1.8rem;
-        width: 42px;
-        height: 42px;
-      }
-    }
-
-    /* content styles */
-    .page-content {
-      flex: 1;
-      max-width: 1200px;
-      margin: 2rem auto;
-      padding: 1rem 2rem;
-    }
-    .page-content h2 {
-      color: var(--deep-navy);
-      font-size: 2rem;
-      border-left: 6px solid var(--brand-sun);
-      padding-left: 1rem;
-    }
-    .content-card {
-      background: white;
-      border-radius: 2rem;
-      padding: 2rem;
-      box-shadow: 0 15px 30px -15px rgba(0,0,0,0.05);
-      margin: 2rem 0;
-    }
-    .logo-note {
-      background: #e0c73710;
-      padding: 1rem;
-      border-radius: 1rem;
-      border-left: 4px solid var(--brand-sky);
-    }
-
-     .mobile-nav a i { font-size: 1.2rem; }
-    .logo-note { background: #f0f7ff; padding: 1.2rem; border-radius: 1.5rem; }
+.start-btn:hover::before {
+    left: 100%;
+}
   </style>
 </head>
 <body>
-  <header class="site-header">
-    <!-- DESKTOP LOGO (visible on desktop, hidden on mobile) -->
-    <div class="desktop-logo">
-      <div class="logo-card studio-logo">
-        <!-- desktop logo image (your main logo) -->
-        <img src="../images/logo1.png" alt="CodeWithMinu Desktop Logo" class="studio-logo-img" style="object-fit: contain;" loading="lazy">
-      </div>
-    </div>
+<header class="navbar">
+  <div class="logo">
+    <img src="../images/small_logo.png" alt="CodeWithMinu Mobile Logo" class="mobile-logo-img" loading="lazy">
+  </div>
 
-    <!-- MOBILE LOGO (visible on mobile, hidden on desktop) -->
-    <div class="mobile-logo">
-      <div class="logo-card">
-        <!-- mobile logo image (different one) -->
-        <img src="../images/small_logo.png" alt="CodeWithMinu Mobile Logo" class="mobile-logo-img" loading="lazy" >
-        <!-- <span class="logo-text">Code<span>WithMinu</span></span> -->
-      </div>
-    </div>
+  <!-- Mobile Menu Toggle -->
+  <div id="mobileMenuToggle" class="mobile-menu">
+    <i class="fa-solid fa-bars"></i>
+  </div>
 
-    <!-- desktop navigation -->
-    <nav class="nav-links">
-      <a href="https://codewithminunextgen.github.io/">Home</a>
-      <a href="/pages/about.html">About Us</a>
-      <a href="/pages/services.html">Service</a>
-      <a href="/pages/blog.html">Blog</a>
-    </nav>
+  <nav class="nav-links" id="mobileNav">
+    <a href="codewithminunextgen.github.io">Home</a>
+    <a href="../pages/about.html">About</a>
+    <a href="../pages/services.html">Services</a>
+    <a href="../pages/blogs.html">Blogs</a>
+    <a href="../pages/projects.html">Projects</a>
+  
+  </nav>
 
-    <!-- desktop auth -->
-    <div class="auth-group">
-      <a href="#" class="auth-link signin"><i class="fa-regular fa-user"></i> Sign in</a>
-      <span class="auth-divider"></span>
-      <a href="#" class="auth-link login"><i class="fa-solid fa-arrow-right-to-bracket"></i> Log in</a>
-    </div>
+  <div class="nav-buttons desktop-only">
+    <button class="login-btn">Login</button>
+    <button class="start-btn">Contact</button>
+  </div>
+</header>
 
-    <!-- mobile hamburger -->
-    <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="menu">
-      <i class="fa-solid fa-bars"></i>
-    </button>
+<style>
+/* Hide mobile menu toggle on desktop */
+.mobile-menu {
+  display: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: #1b2a7a;
+}
 
-    <!-- mobile menu panel -->
-    <div class="mobile-nav" id="mobileNav">
-      <a href="https://codewithminunextgen.github.io/"><i class="fa-regular fa-house"></i> Home</a>
-      <a href="#"><i class="fa-regular fa-address-card"></i> About Us</a>
-      <a href="#"><i class="fa-regular fa-gear"></i> Service</a>
-      <a href="#"><i class="fa-regular fa-pen-to-square"></i> Blog</a>
-      <div class="mobile-auth">
-        <a href="#" class="auth-link signin"><i class="fa-regular fa-user"></i> Sign in</a>
-        <a href="#" class="auth-link login"><i class="fa-solid fa-arrow-right-to-bracket"></i> Log in</a>
-      </div>
-    </div>
-  </header>
+/* Mobile nav hidden by default */
+#mobileNav {
+  display: flex;
+  align-items: center;
+}
 
+/* Responsive styles */
+@media (max-width: 768px) {
+  .nav-links {
+    position: fixed;
+    top: 80px;
+    left: 0;
+    width: 100%;
+    height: calc(100vh - 80px);
+    background: rgba(255,255,255,0.95);
+    backdrop-filter: blur(10px);
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    padding-top: 40px;
+    transform: translateY(-500%);
+    transition: transform 0.3s ease;
+    z-index: 999;
+  }
 
-  <script>
-    (function() {
-      const toggleBtn = document.getElementById('mobileMenuToggle');
-      const mobileNav = document.getElementById('mobileNav');
-      const icon = toggleBtn.querySelector('i');
+  #mobileNav.open {
+    transform: translateY(0);
+  }
 
-      toggleBtn.addEventListener('click', function(e) {
-        e.stopPropagation();
-        const isOpen = mobileNav.classList.contains('open');
-        if (isOpen) {
-          mobileNav.classList.remove('open');
-          icon.className = 'fa-solid fa-bars';
-        } else {
-          mobileNav.classList.add('open');
-          icon.className = 'fa-solid fa-xmark';
-        }
-      });
+  .nav-links a {
+    margin: 20px 0;
+    font-size: 20px;
+  }
 
-      // close when clicking outside
-      document.addEventListener('click', function(event) {
-        if (!mobileNav.contains(event.target) && !toggleBtn.contains(event.target)) {
-          mobileNav.classList.remove('open');
-          icon.className = 'fa-solid fa-bars';
-        }
-      });
+  .nav-buttons.desktop-only {
+    display: none;
+  }
 
-      mobileNav.addEventListener('click', function(e) {
-        e.stopPropagation();
-      });
+  .mobile-menu {
+    display: block;
+  }
 
-      // reset on resize above mobile
-      window.addEventListener('resize', function() {
-        if (window.innerWidth > 768) {
-          mobileNav.classList.remove('open');
-          icon.className = 'fa-solid fa-bars';
-        }
-      });
-    })();
-  </script>
+  .nav-buttons-mobile {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+  }
+
+  .nav-buttons-mobile button {
+    margin: 10px 0;
+  }
+}
+</style>
+
+<script>
+(function() {
+  const toggleBtn = document.getElementById('mobileMenuToggle');
+  const mobileNav = document.getElementById('mobileNav');
+  const icon = toggleBtn.querySelector('i');
+
+  toggleBtn.addEventListener('click', function(e) {
+    e.stopPropagation();
+    const isOpen = mobileNav.classList.contains('open');
+    if (isOpen) {
+      mobileNav.classList.remove('open');
+      icon.className = 'fa-solid fa-bars';
+    } else {
+      mobileNav.classList.add('open');
+      icon.className = 'fa-solid fa-xmark';
+    }
+  });
+
+  // close when clicking outside
+  document.addEventListener('click', function(event) {
+    if (!mobileNav.contains(event.target) && !toggleBtn.contains(event.target)) {
+      mobileNav.classList.remove('open');
+      icon.className = 'fa-solid fa-bars';
+    }
+  });
+
+  mobileNav.addEventListener('click', function(e) {
+    e.stopPropagation();
+  });
+
+  window.addEventListener('resize', function() {
+    if (window.innerWidth > 768) {
+      mobileNav.classList.remove('open');
+      icon.className = 'fa-solid fa-bars';
+    }
+  });
+})();
+</script>
 
 </body>
 </html>

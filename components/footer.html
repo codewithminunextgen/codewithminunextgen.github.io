@@ -37,7 +37,7 @@
       :root {
         --brand-sky: #54b9e8;
         --brand-sun: #e0c737;
-        --deep-navy: #1e2b4f;
+        --deep-navy: linear-gradient(135deg, #0f1c5a, #1b2a7a, #0f1c5a);
         --soft-white: #ffffff;
         --gray-soft: #5f6c84;
       }
@@ -276,15 +276,15 @@
       .newsletter-form button {
         background: var(--brand-sun);
         border: none;
-        padding: 0 1.8rem;
-        font-weight: 600;
+        padding: 0 1px;
+        font-weight: 500;
         color: var(--deep-navy);
         cursor: pointer;
         transition: 0.2s;
         display: flex;
         align-items: center;
-        gap: 0.4rem;
-        font-size: 1rem;
+        gap: 2px;
+        font-size: 16px;
         white-space: nowrap;
       }
       .newsletter-form button:hover {
