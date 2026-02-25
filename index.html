@@ -1488,7 +1488,7 @@ body {
       <label for="faq2" class="faq-question">
         Is payment integration secure?
         <span class="icon"></span>
-        
+
       </label>
       <div class="faq-answer">
         <p>Yes, we provide secure and encrypted payment gateways to ensure safe transactions worldwide.</p>
@@ -1511,6 +1511,23 @@ body {
 </section>
 
 <div id="footer"></div>
+
+
+<script>
+fetch("components/header.html")
+  .then(response => response.text())
+  .then(data => {
+    document.getElementById("header").innerHTML = data;
+  });
+</script>
+
+<script>
+fetch("components/footer.html")
+  .then(response => response.text())
+  .then(data => {
+    document.getElementById("footer").innerHTML = data;
+  });
+</script>
 
 </body>
 </html>
