@@ -1,735 +1,633 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Studio Shodwe · CodeWithMinu – blog</title>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog · Stories & Insights</title>
     <!-- Font Awesome 6 (free) -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
-    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Poppins as per theme -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-
-      body {
-        background: #f4f7fb;
-        font-family:
-          "Inter",
-          system-ui,
-          -apple-system,
-          BlinkMacSystemFont,
-          "Segoe UI",
-          Roboto,
-          sans-serif;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        min-height: 100vh;
-        padding: 1.2rem;
-      }
-
-      :root {
-        --brand-sky: #54b9e8;
-        --brand-sun: #e0c737;
-        --deep-navy: #1e2b4f;
-        --soft-white: #ffffff;
-        --gray-soft: #5f6c84;
-      }
-
-      /* main card – same style as pitch, extended for blog */
-      .homepage {
-        max-width: 1300px;
-        width: 100%;
-        background: var(--soft-white);
-        border-radius: 2.5rem 2.5rem 2rem 2rem;
-        box-shadow:
-          0 25px 45px -18px rgba(30, 43, 79, 0.15),
-          0 10px 20px -10px rgba(84, 185, 232, 0.1);
-        padding: 2.5rem 3rem;
-        border: 1px solid rgba(84, 185, 232, 0.15);
-      }
-
-      /* ----- navbar (identical to original, keeps branding) ----- */
-      .navbar {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        flex-wrap: wrap;
-        gap: 1.5rem 1rem;
-        margin-bottom: 2.5rem;
-      }
-
-      .logo-group {
-        display: flex;
-        align-items: center;
-        gap: 1.2rem;
-        flex-wrap: wrap;
-      }
-
-      .logo-card {
-        display: flex;
-        align-items: center;
-        gap: 0.7rem;
-        padding: 0.4rem 1.4rem 0.4rem 0.8rem;
-        border-radius: 50px;
-        background: #ffffff;
-        border: 1.5px solid transparent;
-        box-shadow: 0 5px 12px rgba(84, 185, 232, 0.08);
-        background:
-          linear-gradient(white, white) padding-box,
-          linear-gradient(120deg, var(--brand-sky), var(--brand-sun)) border-box;
-        height: 60px;
-        width: 218px;
-      }
-      .studio-logo-img {
-        height: 185px;
-        width: 202px;
-        margin-top: 30px;
-      }
-      .studio-logo i {
-        font-size: 2rem;
-        color: var(--brand-sky);
-        filter: drop-shadow(0 2px 4px rgba(84, 185, 232, 0.3));
-      }
-
-      .minu-logo i {
-        font-size: 2rem;
-        color: var(--brand-sun);
-      }
-
-      .minu-brand {
-        display: flex;
-        flex-direction: column;
-        line-height: 1.2;
-      }
-
-      .minu-brand .main-word {
-        font-weight: 800;
-        font-size: 1.25rem;
-        color: var(--deep-navy);
-        letter-spacing: -0.01em;
-      }
-
-      .minu-brand .nextgen {
-        font-size: 0.75rem;
-        font-weight: 700;
-        background: var(--brand-sun);
-        color: var(--deep-navy);
-        padding: 0.2rem 0.8rem;
-        border-radius: 40px;
-        align-self: flex-start;
-        margin-top: 3px;
-      }
-
-      .nav-links {
-        display: flex;
-        align-items: center;
-        gap: 2.2rem;
-      }
-
-      .nav-links a {
-        text-decoration: none;
-        color: var(--deep-navy);
-        font-weight: 500;
-        font-size: 1rem;
-        padding-bottom: 0.3rem;
-        border-bottom: 2px solid transparent;
-        transition: 0.15s;
-      }
-
-      .nav-links a:hover {
-        border-bottom-color: var(--brand-sky);
-      }
-
-      .nav-links .highlight {
-        background: white;
-        padding: 0.5rem 1.8rem;
-        border-radius: 60px;
-        font-weight: 600;
-        border: 2px solid transparent;
-        background:
-          linear-gradient(white, white) padding-box,
-          linear-gradient(145deg, var(--brand-sky), var(--brand-sun)) border-box;
-        color: var(--deep-navy);
-      }
-
-      /* ----- blog header (gentle twist) ----- */
-      .blog-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: flex-end;
-        margin-bottom: 2.5rem;
-        flex-wrap: wrap;
-        gap: 1rem;
-      }
-
-      .blog-header h2 {
-        font-size: 2.6rem;
-        font-weight: 800;
-        color: var(--deep-navy);
-        letter-spacing: -0.02em;
-      }
-
-      .blog-header h2 span {
-        color: var(--brand-sky);
-        position: relative;
-      }
-      .blog-header h2 span::after {
-        content: "";
-        position: absolute;
-        bottom: 5px;
-        left: 0;
-        width: 100%;
-        height: 8px;
-        background: rgba(224, 199, 55, 0.25);
-        border-radius: 20px;
-        z-index: -1;
-      }
-
-      .category-tag {
-        display: flex;
-        gap: 0.5rem;
-        flex-wrap: wrap;
-      }
-      .cat-pill {
-        background: #ffffff;
-        padding: 0.5rem 1.2rem;
-        border-radius: 60px;
-        border: 2px solid transparent;
-        background:
-          linear-gradient(white, white) padding-box,
-          linear-gradient(145deg, var(--brand-sky), #ffffff) border-box;
-        font-weight: 500;
-        color: var(--deep-navy);
-        cursor: default;
-        box-shadow: 0 2px 6px rgba(84, 185, 232, 0.1);
-      }
-      .cat-pill i {
-        color: var(--brand-sun);
-        margin-right: 0.4rem;
-      }
-
-      /* blog grid – attractive cards */
-      .blog-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-        gap: 2rem 1.8rem;
-        margin-bottom: 3rem;
-      }
-
-      .blog-card {
-        background: white;
-        border-radius: 2rem 2rem 2rem 0.8rem;
-        box-shadow: 0 15px 30px -16px rgba(30, 43, 79, 0.12);
-        border: 1px solid rgba(84, 185, 232, 0.15);
-        transition: 0.2s ease-in-out;
-        overflow: hidden;
-        display: flex;
-        flex-direction: column;
-      }
-      .blog-card:hover {
-        transform: translateY(-6px);
-        box-shadow: 0 24px 36px -20px var(--brand-sky);
-        border-color: transparent;
-        background:
-          linear-gradient(white, white) padding-box,
-          linear-gradient(
-              145deg,
-              rgba(84, 185, 232, 0.2),
-              rgba(224, 199, 55, 0.2)
-            )
-            border-box;
-      }
-
-      .card-img {
-        height: 180px;
-        background: #eef6fc;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        position: relative;
-        border-bottom: 2px dashed rgba(84, 185, 232, 0.2);
-      }
-      .img-icon {
-        font-size: 4rem;
-        color: var(--brand-sky);
-        filter: drop-shadow(0 4px 4px rgba(0, 0, 0, 0.02));
-      }
-      .overlay-tag {
-        position: absolute;
-        bottom: 12px;
-        left: 16px;
-        background: white;
-        padding: 0.3rem 1rem;
-        border-radius: 60px;
-        font-size: 0.75rem;
-        font-weight: 700;
-        border: 1px solid var(--brand-sun);
-        color: var(--deep-navy);
-      }
-
-      .card-content {
-        padding: 1.8rem 1.5rem 1.8rem 1.5rem;
-      }
-
-      .meta {
-        display: flex;
-        gap: 0.8rem;
-        align-items: center;
-        font-size: 0.8rem;
-        color: var(--gray-soft);
-        margin-bottom: 0.8rem;
-      }
-      .meta i {
-        color: var(--brand-sky);
-      }
-      .meta span {
-        background: #f0f7fe;
-        padding: 0.2rem 0.8rem;
-        border-radius: 60px;
-        font-weight: 600;
-      }
-
-      .card-content h3 {
-        font-size: 1.5rem;
-        font-weight: 700;
-        line-height: 1.3;
-        margin-bottom: 0.8rem;
-        color: var(--deep-navy);
-      }
-
-      .card-content p {
-        color: #4a556b;
-        line-height: 1.5;
-        margin-bottom: 1.5rem;
-      }
-
-      .card-footer {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        border-top: 1px solid #e0eaf5;
-        padding-top: 1rem;
-        margin-top: 0.2rem;
-      }
-      .author {
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-        font-weight: 600;
-        font-size: 0.9rem;
-      }
-      .author i {
-        background: var(--brand-sun);
-        color: var(--deep-navy);
-        border-radius: 50%;
-        padding: 0.3rem;
-        font-size: 0.75rem;
-      }
-      .read-link {
-        text-decoration: none;
-        font-weight: 600;
-        color: var(--brand-sky);
-        display: flex;
-        align-items: center;
-        gap: 0.4rem;
-      }
-      .read-link i {
-        transition: 0.2s;
-      }
-      .read-link:hover i {
-        transform: translateX(5px);
-        color: var(--brand-sun);
-      }
-
-      /* newsletter / feature */
-      .newsletter-banner {
-        background: #ffffff;
-        border-radius: 2rem 2rem 2rem 0.8rem;
-        padding: 2rem 2.5rem;
-        margin: 2.2rem 0 2rem;
-        border: 2px solid transparent;
-        background:
-          linear-gradient(white, white) padding-box,
-          linear-gradient(125deg, var(--brand-sky), var(--brand-sun)) border-box;
-        display: flex;
-        flex-wrap: wrap;
-        align-items: center;
-        justify-content: space-between;
-        gap: 1.8rem;
-        box-shadow: 0 16px 28px -16px #9bb8d4;
-      }
-
-      .newsletter-text h4 {
-        font-size: 1.8rem;
-        font-weight: 800;
-        color: var(--deep-navy);
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-      }
-      .newsletter-text p {
-        color: var(--gray-soft);
-        max-width: 450px;
-      }
-
-      .signup-form {
-        display: flex;
-        gap: 0.6rem;
-        flex-wrap: wrap;
-      }
-      .signup-form input {
-        padding: 1rem 1.5rem;
-        border-radius: 60px;
-        border: 1px solid #d4e3f0;
-        background: white;
-        font-size: 1rem;
-        min-width: 300px;
-      }
-      .signup-form button {
-        background: var(--deep-navy);
-        border: none;
-        padding: 1rem 2.5rem;
-        border-radius: 60px;
-        font-weight: 600;
-        color: white;
-        box-shadow: 0 8px 16px -8px #1e2b4f;
-        cursor: pointer;
-        transition: 0.15s;
-        display: flex;
-        align-items: center;
-        gap: 8px;
-      }
-      .signup-form button:hover {
-        background: #14233c;
-        transform: scale(1.02);
-      }
-
-      /* featured section reused, with small adaptation */
-      .featured-section {
-        margin-top: 1.5rem;
-        border-top: 2px dashed #e0eaf5;
-        padding-top: 1.8rem;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        flex-wrap: wrap;
-        gap: 1.5rem;
-      }
-
-      .badge-group {
-        display: flex;
-        gap: 1rem;
-        flex-wrap: wrap;
-      }
-
-      .badge {
-        background: #ffffff;
-        padding: 0.5rem 1.8rem 0.5rem 1.2rem;
-        border-radius: 40px;
-        font-weight: 500;
-        border: 2px solid transparent;
-        background:
-          linear-gradient(white, white) padding-box,
-          linear-gradient(135deg, var(--brand-sky), var(--brand-sun)) border-box;
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        color: var(--deep-navy);
-      }
-
-      .footer-note {
-        margin-top: 2rem;
-        display: flex;
-        justify-content: space-between;
-        border-top: 1px solid #d7e2ed;
-        padding-top: 1.5rem;
-        color: #6e7c9c;
-        font-size: 0.9rem;
-      }
-      .footer-note a {
-        color: var(--brand-sky);
-        font-weight: 600;
-        text-decoration: none;
-      }
-
-      @media (max-width: 700px) {
-        .homepage {
-          padding: 1.5rem;
+        /* === YOUR EXACT COLOR THEME (preserved) === */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
         }
-        .blog-header h2 {
-          font-size: 2rem;
+
+        html, body {
+            max-width: 100%;
+            overflow-x: hidden;
         }
-      }
+
+        body {
+            background: linear-gradient(135deg, #eef1f6, #ffffff, #ffffff);
+            min-height: 100vh;
+            color: #0f1c5a;
+        }
+
+        /* ===== BLOG FULL PAGE – ATTRACTIVE DESIGN ===== */
+        .blog-page {
+            width: 90%;
+            margin: 50px auto 80px;
+            position: relative;
+        }
+
+        /* decorative elements (from original theme) */
+        .blog-page::before {
+            content: "✦";
+            position: absolute;
+            top: -20px;
+            left: 3%;
+            font-size: 100px;
+            color: rgba(106, 90, 205, 0.08);
+            transform: rotate(15deg);
+            z-index: 0;
+        }
+
+        .blog-page::after {
+            content: "✦";
+            position: absolute;
+            bottom: -30px;
+            right: 3%;
+            font-size: 120px;
+            color: rgba(27, 42, 122, 0.06);
+            transform: rotate(-10deg);
+            z-index: 0;
+        }
+
+        /* header area */
+        .blog-header {
+            text-align: center;
+            max-width: 750px;
+            margin: 0 auto 50px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .blog-tag {
+            display: inline-block;
+            padding: 10px 30px;
+            background: linear-gradient(135deg, #eef1ff, #ffffff);
+            color: #1b2a7a;
+            border-radius: 40px;
+            font-size: 15px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            border: 1px solid #54b9e8;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.02);
+        }
+
+        .blog-header h1 {
+            font-size: 52px;
+            font-weight: 800;
+            background: linear-gradient(135deg, #0f1c5a, #1b2a7a, #6a5acd);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .blog-header h1::after {
+            content: '';
+            position: absolute;
+            bottom: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90px;
+            height: 4px;
+            background: linear-gradient(90deg, #1b2a7a, #6a5acd, #e0c737);
+            border-radius: 4px;
+        }
+
+        .blog-header p {
+            color: #6c7293;
+            font-size: 18px;
+            line-height: 1.7;
+            margin-top: 25px;
+        }
+
+        /* featured post (attractive large card) */
+        .featured-post {
+            background: white;
+            border-radius: 40px;
+            overflow: hidden;
+            box-shadow: 0 25px 45px #54b9e8, 0 0 0 2px #e0c737;
+            margin-bottom: 70px;
+            display: flex;
+            flex-wrap: wrap;
+            transition: 0.4s;
+            border: 1px solid #54b9e8;
+            position: relative;
+            z-index: 3;
+        }
+
+        .featured-post:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 35px 60px #54b9e8, 0 0 0 3px #6a5acd;
+        }
+
+        .featured-img {
+            flex: 1 1 400px;
+            background: linear-gradient(145deg, #1b2a7a, #6a5acd);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 300px;
+        }
+
+        .featured-img i {
+            font-size: 120px;
+            background: linear-gradient(135deg, #e0c737, #54b9e8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            filter: drop-shadow(0 10px 15px rgba(0,0,0,0.2));
+        }
+
+        .featured-content {
+            flex: 1 1 500px;
+            padding: 45px 40px;
+        }
+
+        .featured-label {
+            display: inline-block;
+            background: #e0c737;
+            color: #0f1c5a;
+            font-weight: 700;
+            padding: 5px 20px;
+            border-radius: 40px;
+            font-size: 14px;
+            letter-spacing: 0.5px;
+            margin-bottom: 20px;
+            border: 1px solid #6a5acd;
+        }
+
+        .featured-content h2 {
+            font-size: 36px;
+            color: #0f1c5a;
+            margin-bottom: 15px;
+            line-height: 1.3;
+        }
+
+        .featured-meta {
+            display: flex;
+            gap: 25px;
+            color: #6c7293;
+            margin-bottom: 20px;
+            font-size: 15px;
+        }
+
+        .featured-meta i {
+            color: #6a5acd;
+            margin-right: 5px;
+        }
+
+        .featured-content p {
+            color: #6c7293;
+            font-size: 17px;
+            line-height: 1.8;
+            margin-bottom: 30px;
+        }
+
+        .featured-content button {
+            background: linear-gradient(135deg, #6a5acd, #5847c4);
+            border: none;
+            padding: 14px 40px;
+            border-radius: 40px;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s;
+            box-shadow: 0 5px 15px #54b9e8;
+            border: 1px solid #e0c737;
+            font-size: 16px;
+        }
+
+        .featured-content button:hover {
+            background: #e0c737;
+            color: #0f1c5a;
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px #e0c737;
+        }
+
+        /* blog grid – attractive cards */
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 35px;
+            position: relative;
+            z-index: 3;
+            margin-bottom: 60px;
+        }
+
+        .blog-card {
+            background: white;
+            border-radius: 30px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px #54b9e8;
+            transition: 0.5s ease;
+            border: 1px solid #e0c737;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-18px) scale(1.02);
+            box-shadow: 0 35px 60px #54b9e8, 0 0 0 2px #6a5acd;
+        }
+
+        .blog-image {
+            height: 220px;
+            background: linear-gradient(145deg, #1b2a7a, #3f34a8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .blog-image i {
+            font-size: 75px;
+            background: linear-gradient(135deg, #e0c737, #54b9e8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            transition: 0.4s;
+            z-index: 2;
+        }
+
+        .blog-card:hover .blog-image i {
+            transform: scale(1.15) rotate(3deg);
+        }
+
+        .blog-image::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to top, rgba(27,42,122,0.3), transparent);
+            opacity: 0;
+            transition: 0.3s;
+        }
+
+        .blog-card:hover .blog-image::after {
+            opacity: 1;
+        }
+
+        .blog-content {
+            padding: 30px 25px 25px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .blog-date {
+            font-size: 13px;
+            color: #6a5acd;
+            font-weight: 600;
+            display: inline-block;
+            padding: 5px 15px;
+            background: rgba(106, 90, 205, 0.1);
+            border-radius: 30px;
+            margin-bottom: 15px;
+            align-self: flex-start;
+            border: 1px solid #54b9e8;
+        }
+
+        .blog-content h3 {
+            font-size: 22px;
+            color: #1b2a7a;
+            margin: 5px 0 10px;
+            line-height: 1.4;
+            font-weight: 700;
+        }
+
+        .blog-content p {
+            font-size: 15px;
+            color: #6c7293;
+            margin-bottom: 20px;
+            line-height: 1.7;
+            flex: 1;
+        }
+
+        .blog-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid rgba(84,185,232,0.2);
+            padding-top: 15px;
+            margin-top: 5px;
+        }
+
+        .blog-author {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+            color: #1b2a7a;
+            font-weight: 500;
+        }
+
+        .blog-author i {
+            color: #6a5acd;
+            background: rgba(106,90,205,0.1);
+            padding: 6px;
+            border-radius: 50%;
+        }
+
+        .blog-link {
+            text-decoration: none;
+            color: #1b2a7a;
+            font-weight: 600;
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 15px;
+        }
+
+        .blog-link i {
+            transition: 0.3s;
+        }
+
+        .blog-link:hover {
+            color: #6a5acd;
+            gap: 8px;
+        }
+
+        .blog-link:hover i {
+            transform: translateX(3px);
+        }
+
+        /* newsletter / CTA section (attractive) */
+        .newsletter-box {
+            background: linear-gradient(145deg, #1b2a7a, #3f34a8, #5847c4);
+            padding: 70px 50px;
+            border-radius: 60px;
+            color: white;
+            box-shadow: 0 35px 60px #54b9e8, 0 0 0 2px #e0c737;
+            position: relative;
+            z-index: 3;
+            margin-top: 50px;
+            overflow: hidden;
+        }
+
+        .newsletter-box::before {
+            content: '';
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(106,90,205,0.3) 0%, transparent 70%);
+            top: -150px;
+            right: -100px;
+            border-radius: 50%;
+        }
+
+        .newsletter-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            max-width: 650px;
+            margin: 0 auto;
+        }
+
+        .newsletter-content h3 {
+            font-size: 38px;
+            margin-bottom: 15px;
+        }
+
+        .newsletter-content p {
+            font-size: 18px;
+            opacity: 0.95;
+            margin-bottom: 30px;
+        }
+
+        .newsletter-input {
+            display: flex;
+            background: white;
+            padding: 5px 5px 5px 25px;
+            border-radius: 60px;
+            max-width: 500px;
+            margin: 0 auto;
+            border: 2px solid #e0c737;
+        }
+
+        .newsletter-input input {
+            flex: 1;
+            border: none;
+            outline: none;
+            padding: 12px 0;
+            font-size: 16px;
+            background: transparent;
+            color: #0f1c5a;
+        }
+
+        .newsletter-input input::placeholder {
+            color: #a0a7c9;
+        }
+
+        .newsletter-input button {
+            background: #e0c737;
+            border: none;
+            padding: 12px 32px;
+            border-radius: 60px;
+            color: #0f1c5a;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.3s;
+            border: 2px solid #6a5acd;
+        }
+
+        .newsletter-input button:hover {
+            background: #6a5acd;
+            color: white;
+            transform: scale(1.05);
+            box-shadow: 0 10px 25px #e0c737;
+        }
+
+        /* responsive */
+        @media (max-width: 900px) {
+            .featured-post { flex-direction: column; }
+            .featured-img { min-height: 250px; }
+        }
+
+        @media (max-width: 768px) {
+            .blog-page { width: 95%; }
+            .blog-header h1 { font-size: 42px; }
+            .newsletter-box { padding: 50px 25px; }
+            .newsletter-input { flex-direction: column; background: transparent; gap: 10px; }
+            .newsletter-input input { background: white; padding: 15px 20px; border-radius: 60px; }
+        }
+
+        /* simple breadcrumb */
+        .page-head {
+            width: 90%;
+            margin: 30px auto 0;
+            text-align: center;
+        }
+        .crumb {
+            color: #6c7293;
+            margin-top: 5px;
+        }
+        .crumb a {
+            color: #1b2a7a;
+            text-decoration: none;
+            border-bottom: 2px solid #e0c737;
+        }
     </style>
-  </head>
-  <body>
-    <div class="homepage">
-      <!-- navbar (exactly as original, to keep identity) -->
-      <div class="navbar">
-        <div class="logo-group">
-          <div class="logo-card studio-logo">
-            <img
-              src="logo1.png"
-              alt="CodeWithMinu.NextGen Logo"
-              class="studio-logo-img"
-            />
-            <!-- <span style="font-weight:600; color: var(--deep-navy);">CodeWithMinu.NextGen </span> -->
-          </div>
+</head>
+<body>
 
-          <div class="logo-card minu-logo">
-            <i class="fas fa-microchip"></i>
-            <div class="minu-brand">
-              <span class="main-word">CodeWithMinu</span>
-              <span class="nextgen">NextGen</span>
-            </div>
-          </div>
-        </div>
-        <div class="nav-links">
-          <a href="#">Home</a>
-          <a href="#">Work</a>
-          <a href="#">Studio</a>
-          <a href="#" class="highlight">Pitch deck</a>
-        </div>
-      </div>
-
-      <!-- blog title area with category filters (attractive) -->
-      <div class="blog-header">
-        <h2>Stories & <span>insights</span></h2>
-        <div class="category-tag">
-          <div class="cat-pill"><i class="fas fa-sparkles"></i> all</div>
-          <div class="cat-pill"><i class="fas fa-microchip"></i> NextGen</div>
-          <div class="cat-pill"><i class="fas fa-palette"></i> design</div>
-          <div class="cat-pill"><i class="fas fa-robot"></i> AI</div>
-        </div>
-      </div>
-
-      <!-- BLOG GRID – 6 attractive cards, brand colors everywhere -->
-      <div class="blog-grid">
-        <!-- card 1 -->
-        <article class="blog-card">
-          <div class="card-img">
-            <i class="fas fa-paint-brush img-icon"></i>
-            <span class="overlay-tag"
-              ><i class="fas fa-crown" style="color: var(--brand-sun)"></i>
-              Studio</span
-            >
-          </div>
-          <div class="card-content">
-            <div class="meta">
-              <i class="far fa-calendar"></i> 3 days ago ·
-              <span>AI design</span>
-            </div>
-            <h3>Generative palette · Shodwe 2.0</h3>
-            <p>
-              How we fused gold & sky into an intelligent color system –
-              reducing iteration by 40%.
-            </p>
-            <div class="card-footer">
-              <div class="author">
-                <i class="fas fa-circle"></i> Minu · product
-              </div>
-              <a href="#" class="read-link"
-                >read <i class="fas fa-arrow-right"></i
-              ></a>
-            </div>
-          </div>
-        </article>
-
-        <!-- card 2 -->
-        <article class="blog-card">
-          <div class="card-img">
-            <i
-              class="fas fa-microchip img-icon"
-              style="color: var(--brand-sun)"
-            ></i>
-            <span class="overlay-tag"
-              ><i class="fas fa-bolt"></i> CodeWithMinu</span
-            >
-          </div>
-          <div class="card-content">
-            <div class="meta">
-              <i class="far fa-clock"></i> 1 week ago · <span>NextGen</span>
-            </div>
-            <h3>Edge AI: inference at the edge</h3>
-            <p>
-              Lightweight models that run directly in the browser – demo inside
-              with React + wasm.
-            </p>
-            <div class="card-footer">
-              <div class="author">
-                <i class="fas fa-code"></i> Davis · lead dev
-              </div>
-              <a href="#" class="read-link"
-                >read <i class="fas fa-arrow-right"></i
-              ></a>
-            </div>
-          </div>
-        </article>
-
-        <!-- card 3 -->
-        <article class="blog-card">
-          <div class="card-img">
-            <i
-              class="fas fa-wand-magic img-icon"
-              style="color: var(--deep-navy)"
-            ></i>
-            <span class="overlay-tag">pitch deck</span>
-          </div>
-          <div class="card-content">
-            <div class="meta">
-              <i class="far fa-star"></i> 2 weeks ago · <span>brand</span>
-            </div>
-            <h3>Pitch perfect: white + gradient</h3>
-            <p>
-              Why our clean deck converted 3x more investors – case study &
-              template.
-            </p>
-            <div class="card-footer">
-              <div class="author"><i class="fas fa-user-tie"></i> Avery</div>
-              <a href="#" class="read-link"
-                >read <i class="fas fa-arrow-right"></i
-              ></a>
-            </div>
-          </div>
-        </article>
-
-        <!-- card 4 -->
-        <article class="blog-card">
-          <div class="card-img">
-            <i
-              class="fas fa-cubes img-icon"
-              style="color: var(--brand-sky)"
-            ></i>
-            <span class="overlay-tag">AI infused</span>
-          </div>
-          <div class="card-content">
-            <div class="meta">
-              <i class="far fa-calendar"></i> 3 weeks ago ·
-              <span>research</span>
-            </div>
-            <h3>From sketch to component</h3>
-            <p>
-              Using Minu’s vision transformer to convert hand‑drawn UI into
-              clean code.
-            </p>
-            <div class="card-footer">
-              <div class="author"><i class="fas fa-microchip"></i> Minu AI</div>
-              <a href="#" class="read-link"
-                >read <i class="fas fa-arrow-right"></i
-              ></a>
-            </div>
-          </div>
-        </article>
-
-        <!-- card 5 -->
-        <article class="blog-card">
-          <div class="card-img">
-            <i
-              class="fas fa-chart-line img-icon"
-              style="color: var(--brand-sun)"
-            ></i>
-            <span class="overlay-tag">growth</span>
-          </div>
-          <div class="card-content">
-            <div class="meta">
-              <i class="far fa-clock"></i> 1 month ago · <span>product</span>
-            </div>
-            <h3>Why “studio + code” works</h3>
-            <p>
-              Blending design elegance with developer velocity – the Shodwe‑Minu
-              synergy.
-            </p>
-            <div class="card-footer">
-              <div class="author"><i class="fas fa-paint-brush"></i> Elena</div>
-              <a href="#" class="read-link"
-                >read <i class="fas fa-arrow-right"></i
-              ></a>
-            </div>
-          </div>
-        </article>
-
-        <!-- card 6 – extra attractive -->
-        <article class="blog-card">
-          <div class="card-img">
-            <i
-              class="fas fa-robot img-icon"
-              style="color: var(--deep-navy)"
-            ></i>
-            <span class="overlay-tag">tutorial</span>
-          </div>
-          <div class="card-content">
-            <div class="meta">
-              <i class="far fa-bookmark"></i> 2 months ago ·
-              <span>NextGen</span>
-            </div>
-            <h3>Build your own brand palette</h3>
-            <p>
-              Step‑by‑step using our sky & gold variables – create a living
-              design system.
-            </p>
-            <div class="card-footer">
-              <div class="author"><i class="fas fa-laptop"></i> Minu lab</div>
-              <a href="#" class="read-link"
-                >read <i class="fas fa-arrow-right"></i
-              ></a>
-            </div>
-          </div>
-        </article>
-      </div>
-
-      <!-- newsletter / attractive call to action with brand colours -->
-      <div class="newsletter-banner">
-        <div class="newsletter-text">
-          <h4>
-            <i class="fas fa-sparkles" style="color: var(--brand-sun)"></i>
-            intelligence in your inbox
-          </h4>
-          <p>
-            Get monthly insights from Studio Shodwe & CodeWithMinu. No spam,
-            only pure light.
-          </p>
-        </div>
-        <div class="signup-form">
-          <input type="email" placeholder="codewithminunextgen@gmail.com" />
-          <button><i class="fas fa-paper-plane"></i> Subscribe</button>
-        </div>
-      </div>
-
-      <!-- featured row (almost identical to original but with blog context) -->
-      <div class="featured-section">
-        <div
-          class="featured-text"
-          style="display: flex; align-items: center; gap: 2rem"
-        >
-          <span
-            ><i class="far fa-star" style="color: var(--brand-sun)"></i> popular
-            tags</span
-          >
-          <div class="badge-group">
-            <div class="badge">
-              <i class="fas fa-paint-brush"></i> design system
-            </div>
-            <div class="badge"><i class="fas fa-rocket"></i> CodeWithMinu</div>
-            <div class="badge"><i class="fas fa-cloud"></i> AI edge</div>
-          </div>
-        </div>
-        <div style="color: var(--deep-navy); font-weight: 500">
-          <i class="fas fa-palette" style="color: var(--brand-sky)"></i> 6 fresh
-          articles
-        </div>
-      </div>
-
-      <!-- footer (consistent) -->
-      <div class="footer-note">
-        <span>www.studioshodwe.blog</span>
-        <span><i class="fas fa-cubes"></i> NextGen · AI infused</span>
-      </div>
+    <!-- page heading (english) -->
+    <div class="page-head">
+        <h1 style="font-size:42px; font-weight:800; color:#0f1c5a;">Latest Blogs</h1>
+        
     </div>
-  </body>
+
+    <!-- main blog page -->
+    <section class="blog-page">
+        <div class="blog-header">
+            <span class="blog-tag"><i class="fas fa-pen-nib" style="margin-right:8px;"></i> ideas & updates</span>
+            <h1>Insights that inspire</h1>
+            <p>Deep dives into tech, design, marketing, and blockchain — straight from our experts.</p>
+        </div>
+
+        <!-- featured post (eye-catching) -->
+        <div class="featured-post">
+            <div class="featured-img">
+                <i class="fas fa-microchip"></i>
+            </div>
+            <div class="featured-content">
+                <span class="featured-label"><i class="fas fa-star" style="margin-right:5px;"></i> featured post</span>
+                <h2>AI & blockchain: the next frontier</h2>
+                <div class="featured-meta">
+                    <span><i class="far fa-calendar-alt"></i> May 12, 2025</span>
+                    <span><i class="far fa-clock"></i> 8 min read</span>
+                </div>
+                <p>How decentralized AI models are reshaping industries — from smart contracts to autonomous agents. We explore real-world use cases and future implications.</p>
+                <button>Read full article <i class="fas fa-arrow-right" style="margin-left:6px;"></i></button>
+            </div>
+        </div>
+
+        <!-- blog grid (6 attractive cards) -->
+        <div class="blog-grid">
+            <!-- card 1: website dev -->
+            <div class="blog-card">
+                <div class="blog-image">
+                    <i class="fas fa-laptop-code"></i>
+                </div>
+                <div class="blog-content">
+                    <span class="blog-date">📅 May 5, 2025</span>
+                    <h3>Why Jamstack outperforms legacy CMS</h3>
+                    <p>Speed, security and developer experience — modern websites are moving to Jamstack. Here's why.</p>
+                    <div class="blog-footer">
+                        <span class="blog-author"><i class="fas fa-circle-user"></i> Rajesh</span>
+                        <a href="#" class="blog-link">Read <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+            <!-- card 2: android -->
+            <div class="blog-card">
+                <div class="blog-image">
+                    <i class="fab fa-android"></i>
+                </div>
+                <div class="blog-content">
+                    <span class="blog-date">📅 Apr 28, 2025</span>
+                    <h3>Material You: designing for Android 14</h3>
+                    <p>Best practices for dynamic theming and adaptive layouts that delight users.</p>
+                    <div class="blog-footer">
+                        <span class="blog-author"><i class="fas fa-circle-user"></i> Priya</span>
+                        <a href="#" class="blog-link">Read <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+            <!-- card 3: seo -->
+            <div class="blog-card">
+                <div class="blog-image">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <div class="blog-content">
+                    <span class="blog-date">📅 Apr 20, 2025</span>
+                    <h3>SEO in 2025: helpful content wins</h3>
+                    <p>How EEAT and user intent are changing the game — and how to adapt your strategy.</p>
+                    <div class="blog-footer">
+                        <span class="blog-author"><i class="fas fa-circle-user"></i> Ankit</span>
+                        <a href="#" class="blog-link">Read <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+            <!-- card 4: digital marketing -->
+            <div class="blog-card">
+                <div class="blog-image">
+                    <i class="fas fa-bullhorn"></i>
+                </div>
+                <div class="blog-content">
+                    <span class="blog-date">📅 Apr 12, 2025</span>
+                    <h3>Short‑form video: roi hacks</h3>
+                    <p>Reels, shorts and tikok — how to turn 15 seconds into high conversion rates.</p>
+                    <div class="blog-footer">
+                        <span class="blog-author"><i class="fas fa-circle-user"></i> Neha</span>
+                        <a href="#" class="blog-link">Read <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+            <!-- card 5: blockchain -->
+            <div class="blog-card">
+                <div class="blog-image">
+                    <i class="fas fa-link"></i>
+                </div>
+                <div class="blog-content">
+                    <span class="blog-date">📅 Apr 5, 2025</span>
+                    <h3>Smart contract auditing 101</h3>
+                    <p>Common vulnerabilities and how we secure DeFi protocols before launch.</p>
+                    <div class="blog-footer">
+                        <span class="blog-author"><i class="fas fa-circle-user"></i> Arjun</span>
+                        <a href="#" class="blog-link">Read <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+            <!-- card 6: web3 -->
+            <div class="blog-card">
+                <div class="blog-image">
+                    <i class="fas fa-cubes"></i>
+                </div>
+                <div class="blog-content">
+                    <span class="blog-date">📅 Mar 28, 2025</span>
+                    <h3>Scaling dApps with L2 solutions</h3>
+                    <p>Arbitrum, Optimism, and zkSync — a practical guide for developers.</p>
+                    <div class="blog-footer">
+                        <span class="blog-author"><i class="fas fa-circle-user"></i> Meera</span>
+                        <a href="#" class="blog-link">Read <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- attractive newsletter CTA (keeps theme) -->
+        <div class="newsletter-box">
+            <div class="newsletter-content">
+                <h3>Never miss a story</h3>
+                <p>Get insights, trends, and early access — straight to your inbox.</p>
+                <div class="newsletter-input">
+                    <input type="email" placeholder="your.email@example.com">
+                    <button>Subscribe</button>
+                </div>
+                <p style="font-size: 14px; margin-top: 20px; opacity:0.8;">📬 we respect your privacy. no spam.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- tiny footer (english) -->
+    <div style="text-align: center; padding: 30px 0 20px; color: #6c7293; border-top: 1px solid rgba(84,185,232,0.2); width: 90%; margin: 0 auto 10px;">
+        <p>© 2025 · Blog page — themed in #0f1c5a, #1b2a7a, #6a5acd, #54b9e8, #e0c737 · all english</p>
+    </div>
+
+</body>
 </html>

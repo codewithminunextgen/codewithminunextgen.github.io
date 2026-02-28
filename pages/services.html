@@ -1,762 +1,443 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Studio Shodwe · CodeWithMinu – IT Services</title>
-  <!-- Font Awesome 6 -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services · CodeWithMinu.NextGen </title>
+    <!-- Font Awesome Icons (clean icons for each service) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Poppins as specified in the original CSS -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* ===== YOUR EXACT THEME COLORS, KEPT INTACT ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
 
-    body {
-      background: #f4f7fb;
-      font-family:
-        "Inter",
-        system-ui,
-        -apple-system,
-        BlinkMacSystemFont,
-        "Segoe UI",
-        Roboto,
-        sans-serif;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-      padding: 1.2rem;
-    }
+        html, body {
+            max-width: 100%;
+            overflow-x: hidden;
+        }
 
-    :root {
-      --brand-sky: #54b9e8;
-      --brand-sun: #e0c737;
-      --deep-navy: #1e2b4f;
-      --soft-white: #ffffff;
-      --gray-soft: #5f6c84;
-    }
+        body {
+            background: linear-gradient(135deg, #eef1f6, #ffffff, #ffffff);
+            min-height: 100vh;
+            color: #0f1c5a;
+        }
 
-    /* main card – consistent with all pages */
-    .homepage {
-      max-width: 1300px;
-      width: 100%;
-      background: var(--soft-white);
-      border-radius: 2.5rem 2.5rem 2rem 2rem;
-      box-shadow:
-        0 25px 45px -18px rgba(30, 43, 79, 0.15),
-        0 10px 20px -10px rgba(84, 185, 232, 0.1);
-      padding: 2.5rem 3rem;
-      border: 1px solid rgba(84, 185, 232, 0.15);
-    }
+        /* ===== SERVICES FULL PAGE – DESIGN ONLY ===== */
+        .services-section {
+            width: 90%;
+            margin: 60px auto 100px auto;   /* full page spacing */
+            text-align: center;
+            position: relative;
+        }
 
-    /* ----- navbar (identical to previous) ----- */
-    .navbar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 1.5rem 1rem;
-      margin-bottom: 2.5rem;
-    }
+        /* decorative stars (from your original) */
+        .services-section::before {
+            content: "✦";
+            position: absolute;
+            top: -40px;
+            left: 5%;
+            font-size: 100px;
+            color: rgba(106, 90, 205, 0.1);
+            transform: rotate(15deg);
+            z-index: 0;
+        }
 
-    .logo-group {
-      display: flex;
-      align-items: center;
-      gap: 1.2rem;
-      flex-wrap: wrap;
-    }
+        .services-section::after {
+            content: "✦";
+            position: absolute;
+            bottom: -40px;
+            right: 5%;
+            font-size: 120px;
+            color: rgba(27, 42, 122, 0.08);
+            transform: rotate(-15deg);
+            z-index: 0;
+        }
 
-    .logo-card {
-      display: flex;
-      align-items: center;
-      gap: 0.7rem;
-      padding: 0.4rem 1.4rem 0.4rem 0.8rem;
-      border-radius: 50px;
-      background: #ffffff;
-      border: 1.5px solid transparent;
-      box-shadow: 0 5px 12px rgba(84, 185, 232, 0.08);
-      background:
-        linear-gradient(white, white) padding-box,
-        linear-gradient(120deg, var(--brand-sky), var(--brand-sun)) border-box;
-      height: 70px;
-    }
+        .services-header {
+            max-width: 750px;
+            margin: 0 auto 60px auto;
+            position: relative;
+            z-index: 2;
+        }
 
-    .studio-logo i {
-      font-size: 2rem;
-      color: var(--brand-sky);
-      filter: drop-shadow(0 2px 4px rgba(84, 185, 232, 0.3));
-    }
+        .services-tag {
+            display: inline-block;
+            padding: 10px 30px;
+            background: linear-gradient(135deg, #eef1ff, #ffffff);
+            color: #1b2a7a;
+            border-radius: 40px;
+            font-size: 15px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            border: 1px solid #54b9e8;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.02);
+        }
 
-    .minu-logo i {
-      font-size: 2rem;
-      color: var(--brand-sun);
-    }
+        .services-header h2 {
+            font-size: 52px;
+            font-weight: 800;
+            color: #0f1c5a;
+            margin-bottom: 25px;
+            position: relative;
+            display: inline-block;
+            background: linear-gradient(135deg, #0f1c5a, #1b2a7a, #6a5acd);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
 
-    .minu-brand {
-      display: flex;
-      flex-direction: column;
-      line-height: 1.2;
-    }
+        .services-header h2::after {
+            content: '';
+            position: absolute;
+            bottom: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, #1b2a7a, #6a5acd, #e0c737);
+            border-radius: 4px;
+        }
 
-    .minu-brand .main-word {
-      font-weight: 800;
-      font-size: 1.25rem;
-      color: var(--deep-navy);
-      letter-spacing: -0.01em;
-    }
+        .services-header p {
+            color: #6c7293;
+            font-size: 18px;
+            line-height: 1.7;
+        }
 
-    .minu-brand .nextgen {
-      font-size: 0.75rem;
-      font-weight: 700;
-      background: var(--brand-sun);
-      color: var(--deep-navy);
-      padding: 0.2rem 0.8rem;
-      border-radius: 40px;
-      align-self: flex-start;
-      margin-top: 3px;
-    }
+        /* services grid – cards */
+        .services-container {
+            display: flex;
+            gap: 35px;
+            justify-content: center;
+            flex-wrap: wrap;
+            position: relative;
+            z-index: 5;
+            margin-top: 30px;
+        }
 
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 2.2rem;
-    }
+        .service-card {
+            background: white;
+            padding: 45px 25px 40px 25px;
+            border-radius: 30px;
+            box-shadow: 0 20px 40px rgba(27, 42, 122, 0.06);
+            transition: 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            max-width: 320px;
+            flex: 1 1 260px;
+            min-width: 260px;
+            border: 1px solid #54b9e8;
+            position: relative;
+            overflow: hidden;
+        }
 
-    .nav-links a {
-      text-decoration: none;
-      color: var(--deep-navy);
-      font-weight: 500;
-      font-size: 1rem;
-      padding-bottom: 0.3rem;
-      border-bottom: 2px solid transparent;
-      transition: 0.15s;
-    }
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 100%;
+            background: linear-gradient(145deg, transparent, rgba(27, 42, 122, 0.02));
+            z-index: 0;
+        }
 
-    .nav-links a:hover {
-      border-bottom-color: var(--brand-sky);
-    }
+        .service-card::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 120px;
+            height: 120px;
+            background: radial-gradient(circle, rgba(106, 90, 205, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            z-index: 0;
+        }
 
-    .nav-links .highlight {
-      background: white;
-      padding: 0.5rem 1.8rem;
-      border-radius: 60px;
-      font-weight: 600;
-      border: 2px solid transparent;
-      background:
-        linear-gradient(white, white) padding-box,
-        linear-gradient(145deg, var(--brand-sky), var(--brand-sun)) border-box;
-      color: var(--deep-navy);
-    }
+        .service-card:hover {
+            transform: translateY(-20px) scale(1.02);
+            box-shadow: 0 35px 60px #54b9e8, 0 0 0 2px rgba(106, 90, 205, 0.2);
+            border-color: #e0c737;
+        }
 
-    /* ----- services page specific styles ----- */
-    .services-header {
-      margin-bottom: 2.5rem;
-      text-align: center;
-    }
+        /* icon area – using font icons with theme gradients */
+        .service-img {
+            padding: 10px 0;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 1;
+            transition: 0.3s;
+            font-size: 70px;
+            display: inline-block;
+        }
 
-    .services-header h2 {
-      font-size: 2.8rem;
-      font-weight: 800;
-      color: var(--deep-navy);
-      letter-spacing: -0.02em;
-    }
+        .service-img i {
+            font-size: 80px;
+            background: linear-gradient(135deg, #1b2a7a, #6a5acd);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            filter: drop-shadow(0 8px 12px rgba(84, 185, 232, 0.3));
+        }
 
-    .services-header h2 span {
-      color: var(--brand-sky);
-      position: relative;
-    }
-    .services-header h2 span::after {
-      content: "";
-      position: absolute;
-      bottom: 5px;
-      left: 0;
-      width: 100%;
-      height: 10px;
-      background: rgba(224, 199, 55, 0.25);
-      border-radius: 20px;
-      z-index: -1;
-    }
+        .service-card:hover .service-img {
+            transform: scale(1.1);
+        }
 
-    .services-header p {
-      font-size: 1.2rem;
-      color: var(--gray-soft);
-      max-width: 700px;
-      margin: 1rem auto 0;
-    }
+        /* individual icon color variations (just for flair) */
+        .service-card:nth-child(1) .service-img i { background: linear-gradient(135deg, #1b2a7a, #e0c737); -webkit-background-clip: text; }
+        .service-card:nth-child(2) .service-img i { background: linear-gradient(135deg, #6a5acd, #54b9e8); -webkit-background-clip: text; }
+        .service-card:nth-child(3) .service-img i { background: linear-gradient(135deg, #0f1c5a, #e0c737); -webkit-background-clip: text; }
+        .service-card:nth-child(4) .service-img i { background: linear-gradient(135deg, #5847c4, #54b9e8); -webkit-background-clip: text; }
+        .service-card:nth-child(5) .service-img i { background: linear-gradient(135deg, #1b2a7a, #6a5acd, #e0c737); -webkit-background-clip: text; }
 
-    /* service grid – 2 columns, elegant cards */
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 2rem;
-      margin-bottom: 3rem;
-    }
+        .service-card h3 {
+            font-size: 26px;
+            font-weight: 700;
+            color: #1b2a7a;
+            margin: 15px 0 12px;
+            position: relative;
+            z-index: 1;
+        }
 
-    .service-card {
-      background: white;
-      border-radius: 2rem 2rem 2rem 0.8rem;
-      padding: 2rem 1.8rem;
-      border: 1px solid rgba(84,185,232,0.15);
-      box-shadow: 0 15px 28px -20px rgba(30,43,79,0.12);
-      transition: all 0.25s ease;
-      display: flex;
-      flex-direction: column;
-    }
-    .service-card:hover {
-      transform: translateY(-6px);
-      border-color: transparent;
-      background:
-        linear-gradient(white, white) padding-box,
-        linear-gradient(145deg, rgba(84,185,232,0.15), rgba(224,199,55,0.15)) border-box;
-      box-shadow: 0 24px 36px -20px var(--brand-sky);
-    }
+        .service-card p {
+            font-size: 15px;
+            color: #6c7293;
+            margin-bottom: 30px;
+            line-height: 1.8;
+            padding: 0 8px;
+            position: relative;
+            z-index: 1;
+        }
 
-    .card-header {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      margin-bottom: 1.2rem;
-    }
-    .service-icon {
-      width: 56px;
-      height: 56px;
-      background: #ffffff;
-      border-radius: 30px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.8rem;
-      color: var(--brand-sky);
-      border: 2px solid transparent;
-      background:
-        linear-gradient(white, white) padding-box,
-        linear-gradient(135deg, var(--brand-sky), var(--brand-sun)) border-box;
-      box-shadow: 0 6px 12px -6px #b3d4ee;
-    }
-    .card-header h3 {
-      font-size: 1.7rem;
-      font-weight: 700;
-      color: var(--deep-navy);
-    }
+        .service-card button {
+            background: linear-gradient(135deg, #6a5acd, #5847c4);
+            border: 2px solid transparent;
+            padding: 12px 35px;
+            border-radius: 40px;
+            color: white;
+            font-weight: 600;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.3s;
+            position: relative;
+            z-index: 2;
+            overflow: hidden;
+            box-shadow: 0 5px 15px #54b9e8;
+            border: 1px solid #e0c737;
+        }
 
-    .service-description {
-      color: var(--gray-soft);
-      line-height: 1.5;
-      margin-bottom: 1.2rem;
-      font-size: 0.98rem;
-    }
+        .service-card button:hover {
+            transform: scale(1.08);
+            background: #e0c737;
+            color: #0f1c5a;
+            box-shadow: 0 10px 25px #e0c737;
+            border-color: #6a5acd;
+        }
 
-    .offer-list {
-      list-style: none;
-      margin: 0.5rem 0 0.8rem;
-    }
-    .offer-list li {
-      margin-bottom: 0.5rem;
-      display: flex;
-      align-items: center;
-      gap: 0.6rem;
-      font-size: 0.95rem;
-      color: #2d3a5e;
-    }
-    .offer-list li i {
-      color: var(--brand-sun);
-      font-size: 0.8rem;
-      width: 18px;
-    }
+        /* animation */
+        .service-card {
+            animation: fadeInUp 0.8s ease backwards;
+        }
+        .service-card:nth-child(1) { animation-delay: 0.1s; }
+        .service-card:nth-child(2) { animation-delay: 0.2s; }
+        .service-card:nth-child(3) { animation-delay: 0.3s; }
+        .service-card:nth-child(4) { animation-delay: 0.4s; }
+        .service-card:nth-child(5) { animation-delay: 0.5s; }
 
-    /* why choose us + cta section */
-    .why-choose {
-      background: #ffffff;
-      border-radius: 2.5rem 2.5rem 2.5rem 0.8rem;
-      padding: 2.5rem 2.8rem;
-      margin: 2.8rem 0 2rem;
-      border: 2px solid transparent;
-      background:
-        linear-gradient(white, white) padding-box,
-        linear-gradient(125deg, var(--brand-sky), var(--brand-sun)) border-box;
-      box-shadow: 0 18px 30px -18px #9bb8d4;
-    }
+        @keyframes fadeInUp {
+            0% { opacity: 0; transform: translateY(30px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
 
-    .why-choose h3 {
-      font-size: 2rem;
-      font-weight: 800;
-      color: var(--deep-navy);
-      display: flex;
-      align-items: center;
-      gap: 0.8rem;
-      margin-bottom: 1.8rem;
-    }
-    .why-choose h3 i {
-      color: var(--brand-sun);
-    }
+        /* additional CTA / bottom section to fill page */
+        .service-cta-note {
+            margin-top: 80px;
+            background: linear-gradient(145deg, #f8f9ff, white);
+            padding: 55px 35px;
+            border-radius: 50px;
+            border: 1px solid #54b9e8;
+            box-shadow: 0 20px 40px #54b9e8;
+            max-width: 950px;
+            margin-left: auto;
+            margin-right: auto;
+            position: relative;
+            z-index: 3;
+        }
 
-    .features-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 1.5rem 2rem;
-      margin-bottom: 2.2rem;
-    }
+        .service-cta-note h3 {
+            font-size: 36px;
+            color: #0f1c5a;
+            margin-bottom: 20px;
+        }
 
-    .feature-item {
-      display: flex;
-      align-items: center;
-      gap: 0.7rem;
-      font-weight: 600;
-      color: var(--deep-navy);
-      font-size: 1.05rem;
-    }
-    .feature-item i {
-      color: var(--brand-sky);
-      background: rgba(84,185,232,0.1);
-      border-radius: 50%;
-      padding: 0.5rem;
-    }
+        .service-cta-note p {
+            color: #6c7293;
+            font-size: 18px;
+            max-width: 700px;
+            margin: 0 auto 25px;
+        }
 
-    .cta-block {
-      background: rgba(30,43,79,0.02);
-      border-radius: 2rem;
-      padding: 2rem 2.5rem;
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1.8rem;
-      border: 1px dashed var(--brand-sky);
-      margin-top: 1rem;
-    }
+        .cta-button {
+            background: #e0c737;
+            border: none;
+            padding: 16px 50px;
+            border-radius: 40px;
+            font-weight: 700;
+            font-size: 18px;
+            color: #0f1c5a;
+            cursor: pointer;
+            transition: 0.3s;
+            box-shadow: 0 5px 15px #54b9e8;
+            border: 2px solid #6a5acd;
+        }
 
-    .cta-text h4 {
-      font-size: 1.8rem;
-      font-weight: 800;
-      color: var(--deep-navy);
-    }
-    .cta-text p {
-      color: var(--gray-soft);
-      font-size: 1.1rem;
-    }
+        .cta-button:hover {
+            background: #6a5acd;
+            color: white;
+            transform: translateY(-6px);
+            box-shadow: 0 15px 30px #6a5acd;
+        }
 
-    .cta-btn {
-      background: var(--deep-navy);
-      border: none;
-      padding: 1rem 2.8rem;
-      border-radius: 60px;
-      font-weight: 600;
-      font-size: 1.1rem;
-      color: white;
-      box-shadow: 0 10px 20px -8px #1e2b4f;
-      cursor: pointer;
-      transition: 0.2s;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.7rem;
-      text-decoration: none;
-    }
-    .cta-btn:hover {
-      background: #14233c;
-      transform: translateY(-2px);
-    }
-    .cta-btn i {
-      color: var(--brand-sun);
-    }
+        /* responsive (from your theme) */
+        @media (max-width: 768px) {
+            body { overflow-x: hidden; }
+            .services-section { width: 95% !important; margin-left: auto !important; margin-right: auto !important; }
+            .services-container { flex-direction: column; align-items: center; }
+            .service-card { width: 100%; max-width: 380px; }
+            .services-header h2 { font-size: 42px; }
+        }
+        @media (max-width: 480px) {
+            .service-card { padding: 35px 15px; }
+            .service-img i { font-size: 70px; }
+            .service-cta-note h3 { font-size: 28px; }
+        }
 
-    /* small extra style for consistent footer */
-    .footer-note {
-      margin-top: 2rem;
-      display: flex;
-      justify-content: space-between;
-      border-top: 1px solid #d7e2ed;
-      padding-top: 1.5rem;
-      color: #6e7c9c;
-      font-size: 0.9rem;
-    }
-
-    @media (max-width: 800px) {
-      .services-grid {
-        grid-template-columns: 1fr;
-      }
-      .homepage {
-        padding: 1.5rem;
-      }
-      .services-header h2 {
-        font-size: 2.2rem;
-      }
-    }
-  </style>
+        /* simple breadcrumb / page indicator (clean english) */
+        .page-head {
+            width: 90%;
+            margin: 30px auto 10px;
+            text-align: center;
+        }
+        .page-head h1 {
+            font-size: 42px;
+            font-weight: 800;
+            color: #0f1c5a;
+        }
+        .page-head .crumb {
+            color: #6c7293;
+            margin-top: 8px;
+            letter-spacing: 0.3px;
+        }
+        .crumb a {
+            color: #1b2a7a;
+            text-decoration: none;
+            border-bottom: 2px solid #e0c737;
+        }
+        .crumb span {
+            color: #1b2a7a;
+            font-weight: 500;
+        }
+    </style>
 </head>
 <body>
-  <div class="homepage">
-    <!-- navbar (consistent brand) -->
-    <div class="navbar">
-      <div class="logo-group">
-        <div class="logo-card studio-logo">
-          <i class="fas fa-paint-brush"></i>
-          <span style="font-weight:600; color: var(--deep-navy);">Studio Shodwe</span>
-        </div>
-        <div class="logo-card minu-logo">
-          <i class="fas fa-microchip"></i>
-          <div class="minu-brand">
-            <span class="main-word">CodeWithMinu</span>
-            <span class="nextgen">NextGen</span>
-          </div>
-        </div>
-      </div>
-      <div class="nav-links">
-        <a href="#">Home</a>
-        <a href="#">Work</a>
-        <a href="#">Studio</a>
-        <a href="#" class="highlight">Pitch deck</a>
-      </div>
-    </div>
-
-    <!-- services header -->
-    <div class="services-header">
-      <h2>💻 Our <span>IT Services</span></h2>
-      <p>Enterprise‑grade technology, boutique approach — from web to blockchain, we deliver.</p>
-    </div>
-
-    <!-- 6 service cards (2 columns) -->
-    <div class="services-grid">
-      <!-- 1. Web Development -->
-      <div class="service-card">
-        <div class="card-header">
-          <div class="service-icon"><i class="fas fa-code"></i></div>
-          <h3>Web Development</h3>
-        </div>
-        <p class="service-description">Modern, responsive, SEO‑friendly websites using React, Next.js, Node.js & more.</p>
-        <ul class="offer-list">
-          <li><i class="fas fa-circle-check"></i> Business websites</li>
-          <li><i class="fas fa-circle-check"></i> E‑commerce platforms</li>
-          <li><i class="fas fa-circle-check"></i> Custom web applications</li>
-          <li><i class="fas fa-circle-check"></i> CMS development</li>
-          <li><i class="fas fa-circle-check"></i> Website maintenance</li>
-        </ul>
-      </div>
-
-      <!-- 2. Mobile App Development -->
-      <div class="service-card">
-        <div class="card-header">
-          <div class="service-icon"><i class="fas fa-mobile-alt"></i></div>
-          <h3>Mobile App Dev</h3>
-        </div>
-        <p class="service-description">High‑performance Android & iOS apps designed for engagement and scale.</p>
-        <ul class="offer-list">
-          <li><i class="fas fa-circle-check"></i> Native & Cross‑platform</li>
-          <li><i class="fas fa-circle-check"></i> UI/UX focused development</li>
-          <li><i class="fas fa-circle-check"></i> App testing & deployment</li>
-          <li><i class="fas fa-circle-check"></i> App maintenance & support</li>
-        </ul>
-      </div>
-
-      <!-- 3. Cloud Solutions -->
-      <div class="service-card">
-        <div class="card-header">
-          <div class="service-icon"><i class="fas fa-cloud"></i></div>
-          <h3>Cloud Solutions</h3>
-        </div>
-        <p class="service-description">Secure, scalable infrastructure — move your business to the cloud.</p>
-        <ul class="offer-list">
-          <li><i class="fas fa-circle-check"></i> Cloud migration</li>
-          <li><i class="fas fa-circle-check"></i> Cloud architecture design</li>
-          <li><i class="fas fa-circle-check"></i> AWS / Azure solutions</li>
-          <li><i class="fas fa-circle-check"></i> Server management</li>
-          <li><i class="fas fa-circle-check"></i> Backup & disaster recovery</li>
-        </ul>
-      </div>
-
-      <!-- 4. Cybersecurity Services -->
-      <div class="service-card">
-        <div class="card-header">
-          <div class="service-icon"><i class="fas fa-shield-halved"></i></div>
-          <h3>Cybersecurity</h3>
-        </div>
-        <p class="service-description">Protect your business with advanced threat monitoring and audits.</p>
-        <ul class="offer-list">
-          <li><i class="fas fa-circle-check"></i> Network security</li>
-          <li><i class="fas fa-circle-check"></i> Data protection</li>
-          <li><i class="fas fa-circle-check"></i> Security audits</li>
-          <li><i class="fas fa-circle-check"></i> Threat monitoring</li>
-          <li><i class="fas fa-circle-check"></i> Compliance solutions</li>
-        </ul>
-      </div>
-
-      <!-- 5. Blockchain Development -->
-      <div class="service-card">
-        <div class="card-header">
-          <div class="service-icon"><i class="fas fa-link"></i></div>
-          <h3>Blockchain</h3>
-        </div>
-        <p class="service-description">Secure, transparent solutions for modern business.</p>
-        <ul class="offer-list">
-          <li><i class="fas fa-circle-check"></i> Smart contracts</li>
-          <li><i class="fas fa-circle-check"></i> Crypto wallet development</li>
-          <li><i class="fas fa-circle-check"></i> DeFi platforms</li>
-          <li><i class="fas fa-circle-check"></i> NFT marketplace</li>
-          <li><i class="fas fa-circle-check"></i> Custom blockchain apps</li>
-        </ul>
-      </div>
-
-      <!-- 6. Digital Transformation -->
-      <div class="service-card">
-        <div class="card-header">
-          <div class="service-icon"><i class="fas fa-chart-pie"></i></div>
-          <h3>Digital Transformation</h3>
-        </div>
-        <p class="service-description">Modernise operations using AI, automation & analytics.</p>
-        <ul class="offer-list">
-          <li><i class="fas fa-circle-check"></i> Process automation</li>
-          <li><i class="fas fa-circle-check"></i> ERP solutions</li>
-          <li><i class="fas fa-circle-check"></i> CRM development</li>
-          <li><i class="fas fa-circle-check"></i> AI‑based tools</li>
-          <li><i class="fas fa-circle-check"></i> Business analytics</li>
-        </ul>
-      </div>
-    </div>
-
-    <!-- Why choose us + CTA (exactly as provided) -->
-    <div class="why-choose">
-      <h3><i class="fas fa-star"></i> Why Choose Our IT Services?</h3>
-      <div class="features-grid">
-        <div class="feature-item"><i class="fas fa-badge-check"></i> ✔ Experienced Developers</div>
-        <div class="feature-item"><i class="fas fa-lock"></i> ✔ Scalable & Secure Solutions</div>
-        <div class="feature-item"><i class="fas fa-clock"></i> ✔ On-Time Project Delivery</div>
-        <div class="feature-item"><i class="fas fa-headset"></i> ✔ 24/7 Technical Support</div>
-        <div class="feature-item"><i class="fas fa-wallet"></i> ✔ Cost‑Effective Pricing</div>
-      </div>
-      <p style="color: var(--deep-navy); font-weight: 500; margin-bottom: 1.5rem;">We focus on long‑term partnerships and measurable results.</p>
-
-      <!-- get started cta -->
-      <div class="cta-block">
-        <div class="cta-text">
-          <h4>📞 Get Started Today</h4>
-          <p>Looking for reliable IT services? Let’s transform your business.</p>
-        </div>
-        <a href="#" class="cta-btn"><i class="fas fa-calendar-check"></i> Free consultation</a>
-      </div>
-    </div>
-
-    <!-- footer (consistent) -->
-    <div class="footer-note">
-      <span>www.studioshodwe.com/services</span>
-      <span><i class="fas fa-cubes"></i> NextGen · AI infused</span>
-    </div>
-  </div>
-</body>
-</html>
-
-
-
-<!-- inde -->
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
- <title>CodeWithMinuNextGen — Learn, Build & Innovate with Code</title>
-
-
-  <meta name="description" content="Learn Web Development, Next.js, SEO and Digital Marketing with CodeWithMinu NextGen. Simple tutorials, practical guides and modern web strategies.">
-  <meta name="keywords" content="Next.js, Web Development, SEO, Digital Marketing, HTML, CSS, JavaScript">
-  <meta name="author" content="CodeWithMinu NextGen">
-  <meta name="robots" content="index, follow">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <!-- Canonical -->
-  <link rel="canonical" href="https://codewithminunextgen.github.io/">
-
-  <!-- Favicon -->
-  <link rel="icon" type="image/png" href="images/logo1.png">
-
-  <!-- Font Awesome 6 (free) -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <!-- Google Font: Inter + fallback -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="footercss" href="css/footer.css" >
-  <link rel="header_css" href="css/header.css">
-
-  <meta name="google-site-verification" content="FmZb0gABe2r_ndSqdQAEiTFH5_wwUPzpae6AZWpcXzM" />
-
-  
-</head>
-<body>
-<main class="homepage">
-   <div id="header"></div>
     
+  <div  id="header"></div>
+    <!-- simple page heading (english only) -->
+    <div class="page-head">
+        <h1>Our Services</h1>
+    </div>
 
-  <!-- HERO attractive + right image -->
-  <section class="hero">
-    <div class="hero-content">
-      <h1>Build the Future with <span>Modern Web Technologies</span></h1>
-      <div class="hero-sub">Welcome to CodeWithMinu.NextGen – trusted partner for Next.js, IT solutions & tutorials</div>
-      <p>We help startups, developers, and businesses build fast, scalable, and SEO-optimized web applications using Next.js, React, and modern tools.</p>
-      <div class="hero-btns">
-        <button class="hero-btn"><i class="fa-solid fa-rocket"></i> 🚀 Get Started</button>
-        <button class="hero-btn hero-btn-light"><i class="fa-solid fa-book-open"></i> 📘 Explore Tutorials</button>
-      </div>
-    </div>
-    <div class="hero-visual float-animation">
-      <img src="https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="coding workspace" loading="lazy">
-    </div>
-  </section>
+    <!-- ===== FULL SERVICES PAGE CONTENT ===== -->
+    <section class="services-section">
+        <div class="services-header">
+            <span class="services-tag"><i class="fas fa-code-branch" style="margin-right: 8px;"></i> What We Build</span>
+            <!-- <h2>Digital solutions,<br> engineered for impact</h2> -->
+            <p>We craft websites, mobile apps, and marketing strategies that drive growth. From blockchain to SEO — we deliver.</p>
+        </div>
 
-  <!-- ABOUT with image left (plus soft shadow) -->
-  <div class="section-head"><h2><i class="fa-regular fa-compass"></i> Who We Are</h2></div>
-  <section class="about-grid">
-    <div class="about-image">
-      <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="team collaboration" loading="lazy">
-    </div>
-    <div class="about-text">
-      <h3>👩‍💻 CodeWithMinu.NextGen</h3>
-      <p>We are a modern IT and development platform focused on delivering powerful web solutions and practical learning resources. We combine creativity, performance, and clean code to build applications that are not just beautiful — but also scalable and user-friendly.</p>
-      <p><strong>Our mission:</strong> build high‑performance websites, teach modern development, help businesses grow.</p>
-      <p>Whether you're a beginner learning Next.js or a startup looking for development services, we are here to support your journey.</p>
-    </div>
-  </section>
+        <!-- service cards grid - five exactly as requested -->
+        <div class="services-container">
+            <!-- 1. Website Development -->
+            <div class="service-card">
+                <div class="service-img">
+                    <i class="fas fa-laptop-code"></i>
+                </div>
+                <h3>Website development</h3>
+                <p>Custom, responsive websites, headless CMS, e‑commerce, and web portals. Built for speed and conversions.</p>
+                <button>Learn more <i class="fas fa-arrow-right" style="margin-left: 6px;"></i></button>
+            </div>
 
-  <!-- SERVICES – redesigned attractive cards (exactly as requested) -->
-  <div class="services-wrapper">
-    <div class="section-head"><h2><i class="fa-regular fa-gem"></i> Our Professional Services</h2></div>
-    <section class="services-grid">
-      <div class="service-card"><div class="service-icon-wrapper"><i class="fa-solid fa-globe"></i></div><h4>🌐 Web App Dev</h4><p class="service-desc">Custom dashboards, SaaS platforms, SEO‑friendly architecture.</p><ul class="service-features"><li><i class="fa-regular fa-circle-check"></i> Single-page apps / Next.js</li><li><i class="fa-regular fa-circle-check"></i> Real-time dashboards</li><li><i class="fa-regular fa-circle-check"></i> API integration</li><li><i class="fa-regular fa-circle-check"></i> Scalable backends</li></ul><span class="service-tag">from $2.5k</span></div>
-      <div class="service-card"><div class="service-icon-wrapper"><i class="fa-solid fa-robot"></i></div><h4>🤖 AI Solutions</h4><p class="service-desc">Chatbots, automation, smart data analysis & workflow optimization.</p><ul class="service-features"><li><i class="fa-regular fa-circle-check"></i> AI chatbots (custom)</li><li><i class="fa-regular fa-circle-check"></i> Business automation</li><li><i class="fa-regular fa-circle-check"></i> Recommendation engines</li><li><i class="fa-regular fa-circle-check"></i> Data mining & insights</li></ul><span class="service-tag">tailored AI</span></div>
-      <div class="service-card"><div class="service-icon-wrapper"><i class="fa-solid fa-magnifying-glass-chart"></i></div><h4>📈 SEO Services</h4><p class="service-desc">Technical audit, keyword strategy, speed optimization & content structure.</p><ul class="service-features"><li><i class="fa-regular fa-circle-check"></i> On‑page & technical SEO</li><li><i class="fa-regular fa-circle-check"></i> Core Web Vitals fix</li><li><i class="fa-regular fa-circle-check"></i> Keyword research</li><li><i class="fa-regular fa-circle-check"></i> SEO blog architecture</li></ul><span class="service-tag">rank higher</span></div>
-      <div class="service-card"><div class="service-icon-wrapper"><i class="fa-solid fa-chart-simple"></i></div><h4>📊 Digital Marketing</h4><p class="service-desc">Social media, lead generation, brand positioning & conversion optimization.</p><ul class="service-features"><li><i class="fa-regular fa-circle-check"></i> Content & social strategy</li><li><i class="fa-regular fa-circle-check"></i> Lead generation funnels</li><li><i class="fa-regular fa-circle-check"></i> Conversion rate optimization</li><li><i class="fa-regular fa-circle-check"></i> Brand voice & positioning</li></ul><span class="service-tag">grow online</span></div>
+            <!-- 2. Android development -->
+            <div class="service-card">
+                <div class="service-img">
+                    <i class="fab fa-android"></i>
+                </div>
+                <h3>Android apps</h3>
+                <p>Native Android & cross‑platform mobile apps. Clean UI, Play Store deployment, and scalable backends.</p>
+                <button>Learn more <i class="fas fa-arrow-right" style="margin-left: 6px;"></i></button>
+            </div>
+
+            <!-- 3. SEO -->
+            <div class="service-card">
+                <div class="service-img">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <h3>SEO</h3>
+                <p>Search engine optimization that boosts rankings. Technical SEO, content strategy, and authority building.</p>
+                <button>Learn more <i class="fas fa-arrow-right" style="margin-left: 6px;"></i></button>
+            </div>
+
+            <!-- 4. Digital marketing -->
+            <div class="service-card">
+                <div class="service-img">
+                    <i class="fas fa-bullhorn"></i>
+                </div>
+                <h3>Digital marketing</h3>
+                <p>Paid ads, social media, email automation, and funnel optimization. We turn clicks into customers.</p>
+                <button>Learn more <i class="fas fa-arrow-right" style="margin-left: 6px;"></i></button>
+            </div>
+
+            <!-- 5. Blockchain -->
+            <div class="service-card">
+                <div class="service-img">
+                    <i class="fas fa-link"></i>
+                </div>
+                <h3>Blockchain</h3>
+                <p>Smart contracts, dApps, tokenization, and Web3 infrastructure. Secure, transparent, future‑ready.</p>
+                <button>Learn more <i class="fas fa-arrow-right" style="margin-left: 6px;"></i></button>
+            </div>
+        </div>
+
+        <!-- extra bottom section – purely english & theme consistent -->
+        <div class="service-cta-note">
+            <h3>Need a full‑stack digital partner?</h3>
+            <p>We combine web, mobile, SEO, marketing, and blockchain into one seamless strategy. Let’s build something extraordinary.</p>
+            <button class="cta-button">📅  Schedule a call</button>
+        </div>
     </section>
-  </div>
 
-  <!-- PROJECTS with images (10 cards, more dynamic) -->
-  <div class="section-head"><h2><i class="fa-regular fa-folder-open"></i> Our Projects</h2></div>
-  <section class="projects-grid">
-    <div class="project-card"><img loading="lazy" src="https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="startup landing"><div class="project-info"><h4>Startup landing</h4><p>Convertible, modern Next.js site</p></div></div>
-    <div class="project-card"><img loading="lazy" src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="developer dashboard"><div class="project-info"><h4>Dev dashboard</h4><p>Analytics & real‑time data</p></div></div>
-    <div class="project-card"><img loading="lazy" src="https://images.unsplash.com/photo-1432821596592-e2c18b78144f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="SEO blog"><div class="project-info"><h4>SEO blog</h4><p>Next.js + MDX, 95+ lighthouse</p></div></div>
-    <div class="project-card"><img loading="lazy" src="https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="business website"><div class="project-info"><h4>Business site</h4><p>Custom corporate identity</p></div></div>
-    <div class="project-card"><img loading="lazy" src="https://images.unsplash.com/photo-1545235617-7a424c1a60cc?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="portfolio"><div class="project-info"><h4>Portfolio</h4><p>creative developer showcase</p></div></div>
-    <div class="project-card"><img loading="lazy" src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="e-learning"><div class="project-info"><h4>E‑learning</h4><p>interactive course platform</p></div></div>
-    <div class="project-card"><img loading="lazy" src="https://images.unsplash.com/photo-1432821596592-e2c18b78144f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="SEO blog"><div class="project-info"><h4>SEO blog</h4><p>Next.js + MDX, 95+ lighthouse</p></div></div>
-    <div class="project-card"><img loading="lazy" src="https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="business website"><div class="project-info"><h4>Business site</h4><p>Custom corporate identity</p></div></div>
-    <div class="project-card"><img loading="lazy" src="https://images.unsplash.com/photo-1545235617-7a424c1a60cc?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="portfolio"><div class="project-info"><h4>Portfolio</h4><p>creative developer showcase</p></div></div>
-    <div class="project-card"><img loading="lazy" src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="e-learning"><div class="project-info"><h4>E‑learning</h4><p>interactive course platform</p></div></div>
-  </section>
+     <div  id="footer"></div>
 
-  <!-- TESTIMONIALS with avatars (6 cards) -->
-  <div class="section-head"><h2><i class="fa-regular fa-message"></i> What Clients & Learners Say</h2></div>
-  <section class="testi-grid">
-    <div class="testi-card"><img class="testi-avatar" src="https://randomuser.me/api/portraits/women/44.jpg" alt="client"><div class="testi-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div><p>“Clean code and very professional development approach.”</p><span class="testi-name">— Alina K.</span></div>
-    <div class="testi-card"><img class="testi-avatar" src="https://randomuser.me/api/portraits/men/32.jpg" alt="learner"><div class="testi-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div><p>“Easy-to-understand tutorials for beginners.”</p><span class="testi-name">— Ravi M.</span></div>
-    <div class="testi-card"><img class="testi-avatar" src="https://randomuser.me/api/portraits/women/68.jpg" alt="client"><div class="testi-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div><p>“Fast, modern, and SEO-friendly website delivery.”</p><span class="testi-name">— Sophie L.</span></div>
-    <div class="testi-card"><img class="testi-avatar" src="https://randomuser.me/api/portraits/men/75.jpg" alt="founder"><div class="testi-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div><p>“Highly recommended for Next.js development.”</p><span class="testi-name">— James W.</span></div>
-    <div class="testi-card"><img class="testi-avatar" src="https://randomuser.me/api/portraits/women/68.jpg" alt="client"><div class="testi-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div><p>“Fast, modern, and SEO-friendly website delivery.”</p><span class="testi-name">— Sophie L.</span></div>
-    <div class="testi-card"><img class="testi-avatar" src="https://randomuser.me/api/portraits/men/75.jpg" alt="founder"><div class="testi-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div><p>“Highly recommended for Next.js development.”</p><span class="testi-name">— James W.</span></div>
-  </section>
-  <p style="text-align:center; color:var(--deep-navy); margin:1rem 0 2rem;">We focus on quality, transparency, and long-term relationships.</p>
-
-  <!-- FAQ (attractive accordion) -->
-  <div class="faq-container">
-    <div class="section-head"><h2><i class="fa-regular fa-circle-question"></i> Frequently Asked Questions (FAQs)</h2></div>
-    <div class="faq-accordion" id="faqAccordion">
-      <div class="faq-item"><button class="faq-question"><span class="number">1</span><span class="question-text">What technologies do you use?</span><span class="faq-icon"><i class="fa-solid fa-plus"></i></span></button><div class="faq-answer"><p>We primarily use <strong>Next.js, React, JavaScript, HTML, CSS</strong> and modern web tools. For back-end we integrate Node.js or third-party services as needed.</p></div></div>
-      <div class="faq-item"><button class="faq-question"><span class="number">2</span><span class="question-text">Do you provide tutorials for beginners?</span><span class="faq-icon"><i class="fa-solid fa-plus"></i></span></button><div class="faq-answer"><p>Yes! We provide <strong>beginner-friendly tutorials</strong> with step-by-step explanations, practical examples, and real project walkthroughs.</p></div></div>
-      <div class="faq-item"><button class="faq-question"><span class="number">3</span><span class="question-text">Can you build custom websites for businesses?</span><span class="faq-icon"><i class="fa-solid fa-plus"></i></span></button><div class="faq-answer"><p>Absolutely. We create <strong>tailored web solutions</strong> based on your business needs — from startup landing pages to full‑scale SaaS platforms.</p></div></div>
-      <div class="faq-item"><button class="faq-question"><span class="number">4</span><span class="question-text">Is Next.js good for SEO?</span><span class="faq-icon"><i class="fa-solid fa-plus"></i></span></button><div class="faq-answer"><p>Yes, Next.js is <strong>excellent for SEO</strong> because of server‑side rendering (SSR) and static generation, which deliver fast content to search engines.</p></div></div>
-      <div class="faq-item"><button class="faq-question"><span class="number">5</span><span class="question-text">How can I contact you?</span><span class="faq-icon"><i class="fa-solid fa-plus"></i></span></button><div class="faq-answer"><p>You can reach us through the <strong>contact form</strong> on our website, or email us directly at <strong>hello@codewithminu.dev</strong>.</p></div></div>
-    </div>
-  </div>
-
-  <!-- BLOG detailed -->
-  <div class="section-head"><h2><i class="fa-regular fa-newspaper"></i> Learn Modern Development</h2></div>
-  <section class="blog-detailed">
-    <p><strong>🚀 Next.js Tutorials:</strong> App Router, server/client components, SEO, API, deployment.</p>
-    <p><strong>⚛️ React.js Tutorials:</strong> basics, hooks, state management, projects.</p>
-    <p><strong>💡 Why our blog?</strong> beginner language, practical, real projects, SEO-friendly, regular updates.</p>
-    <p>🔥 <em>Start learning today — become a modern full‑stack developer.</em></p>
-  </section>
-
-  <div id="footer"></div>
-</main>
-
- <script>
-    fetch("/components/header.html")
-      .then(response => response.text())
-      .then(data => {
-        document.getElementById("header").innerHTML = data;
-      });
-  </script>
+     <script>
+fetch("../components/header.html")
+  .then(response => response.text())
+  .then(data => {
+    document.getElementById("header").innerHTML = data;
+  });
+</script>
 
 <script>
-  fetch("/components/footer.html") .then(response => response.text()) .then(data => { document.getElementById("footer").innerHTML = data; }).catch(()=>{}); // silent fail
-  // accordion
-  (function() {
-    const faqItems = document.querySelectorAll('.faq-item');
-    faqItems.forEach(item => {
-      const questionBtn = item.querySelector('.faq-question');
-      const icon = item.querySelector('.faq-icon i');
-      questionBtn.addEventListener('click', function() {
-        const isActive = item.classList.contains('active');
-        if (isActive) {
-          item.classList.remove('active');
-          icon.className = 'fa-solid fa-plus';
-        } else {
-          item.classList.add('active');
-          icon.className = 'fa-solid fa-minus';
-        }
-      });
-    });
-  })();
+fetch("../components/footer.html")
+  .then(response => response.text())
+  .then(data => {
+    document.getElementById("footer").innerHTML = data;
+  });
 </script>
 
-
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@graph": [
-
-    {
-      "@type": "Organization",
-      "@id": "https://codewithminunextgen.github.io/#organization",
-      "name": "CodeWithMinu NextGen",
-      "url": "https://codewithminunextgen.github.io/",
-      "logo": "https://codewithminunextgen.github.io/logo.png",
-      "description": "CodeWithMinu NextGen is a modern learning platform focused on Web Development, Next.js, SEO and Digital Marketing tutorials with practical implementation and real-world strategies.",
-      "founder": {
-        "@type": "Person",
-        "name": "Minu"
-      },
-      "sameAs": [
-        "https://x.com/codewithminu",
-        "https://in.pinterest.com/codewithminunextgen/",
-        "https://www.reddit.com/user/CodeWithMinuNextGen/",
-        "https://www.instagram.com/codewithminu.nextgen/",
-        "https://www.quora.com/profile/Codewithminu-nextgen",
-        "https://medium.com/@codewithminu.nextgen",
-        "https://www.youtube.com/@codewithminu.nextgen",
-        "https://www.linkedin.com/in/codewithminu-nextgen-67b3463b1/"
-      ]
-    },
-
-    {
-      "@type": "WebSite",
-      "@id": "https://codewithminunextgen.github.io/#website",
-      "url": "https://codewithminunextgen.github.io/",
-      "name": "CodeWithMinu NextGen",
-      "publisher": {
-        "@id": "https://codewithminunextgen.github.io/#organization"
-      },
-      "potentialAction": {
-        "@type": "SearchAction",
-        "target": "https://codewithminunextgen.github.io/?search={search_term_string}",
-        "query-input": "required name=search_term_string"
-      }
-    }
-
-  ]
-}
-</script>
 </body>
 </html>
