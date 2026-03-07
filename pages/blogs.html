@@ -215,108 +215,115 @@
             box-shadow: 0 15px 30px #e0c737;
         }
 
-        /* blog grid – attractive cards */
-        .blog-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-            gap: 35px;
-            position: relative;
-            z-index: 3;
-            margin-bottom: 60px;
-        }
 
-        .blog-card {
-            background: white;
-            border-radius: 30px;
-            overflow: hidden;
-            box-shadow: 0 20px 40px #54b9e8;
-            transition: 0.5s ease;
-            border: 1px solid #e0c737;
-            display: flex;
-            flex-direction: column;
-        }
+        /* ===== BLOG SECTION ===== */
+.blog-section {
+    width: 90%;
+    margin: 160px auto;
+    text-align: center;
+}
 
-        .blog-card:hover {
-            transform: translateY(-18px) scale(1.02);
-            box-shadow: 0 35px 60px #54b9e8, 0 0 0 2px #6a5acd;
-        }
 
-        .blog-image {
-            height: 220px;
-            background: linear-gradient(145deg, #1b2a7a, #3f34a8);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            overflow: hidden;
-        }
 
-        .blog-image i {
-            font-size: 75px;
-            background: linear-gradient(135deg, #e0c737, #54b9e8);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            transition: 0.4s;
-            z-index: 2;
-        }
+.blog-container {
+    display: flex;
+    gap: 40px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
 
-        .blog-card:hover .blog-image i {
-            transform: scale(1.15) rotate(3deg);
-        }
+.blog-card {
+    background: white;
+    border-radius: 30px;
+    overflow: hidden;
+    box-shadow: 0 20px 40px #54b9e8;
+    transition: 0.5s ease;
+    max-width: 300px;
+    text-align: left;
+    border: 1px solid #e0c737;
+}
 
-        .blog-image::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(to top, rgba(27,42,122,0.3), transparent);
-            opacity: 0;
-            transition: 0.3s;
-        }
+.blog-card:hover {
+    transform: translateY(-15px) scale(1.02);
+    box-shadow: 0 35px 60px #54b9e8, 0 0 0 2px #e0c737;
+}
 
-        .blog-card:hover .blog-image::after {
-            opacity: 1;
-        }
+.blog-image {
+    overflow: hidden;
+    position: relative;
+}
 
-        .blog-content {
-            padding: 30px 25px 25px;
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-        }
+.blog-image::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, rgba(27, 42, 122, 0.3), transparent);
+    opacity: 0;
+    transition: 0.3s;
+}
 
-        .blog-date {
-            font-size: 13px;
-            color: #6a5acd;
-            font-weight: 600;
-            display: inline-block;
-            padding: 5px 15px;
-            background: rgba(106, 90, 205, 0.1);
-            border-radius: 30px;
-            margin-bottom: 15px;
-            align-self: flex-start;
-            border: 1px solid #54b9e8;
-        }
+.blog-card:hover .blog-image::after {
+    opacity: 1;
+}
 
-        .blog-content h3 {
-            font-size: 22px;
-            color: #1b2a7a;
-            margin: 5px 0 10px;
-            line-height: 1.4;
-            font-weight: 700;
-        }
+.blog-image img {
+    width: 100%;
+    height: 240px;
+    object-fit: cover;
+    transition: 0.5s;
+}
 
-        .blog-content p {
-            font-size: 15px;
-            color: #6c7293;
-            margin-bottom: 20px;
-            line-height: 1.7;
-            flex: 1;
-        }
+.blog-card:hover .blog-image img {
+    transform: scale(1.1);
+}
 
+.blog-content {
+    padding: 30px;
+}
+
+.blog-date {
+    font-size: 13px;
+    color: #6a5acd;
+    font-weight: 600;
+    display: inline-block;
+    padding: 5px 15px;
+    background: rgba(106, 90, 205, 0.1);
+    border-radius: 30px;
+    margin-bottom: 15px;
+}
+
+.blog-content h3 {
+    font-size: 22px;
+    color: #1b2a7a;
+    margin: 10px 0;
+    line-height: 1.4;
+}
+
+.blog-content p {
+    font-size: 15px;
+    color: #6c7293;
+    margin-bottom: 20px;
+    line-height: 1.8;
+}
+
+.blog-content a {
+    text-decoration: none;
+    color: #1b2a7a;
+    font-weight: 600;
+    transition: 0.3s;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.blog-content a:hover {
+    color: #6a5acd;
+    gap: 10px;
+}
+      
         .blog-footer {
             display: flex;
             justify-content: space-between;
@@ -518,105 +525,97 @@
             </div>
         </div>
 
-        <!-- blog grid (6 attractive cards) -->
-        <div class="blog-grid">
-            <!-- card 1: website dev -->
-            <div class="blog-card">
-                <div class="blog-image">
-                    <i class="fas fa-laptop-code"></i>
-                </div>
-              <div class="blog-content">
-    <span class="blog-date">📅 May 5, 2025</span>
-    <h3>What is Blockchain? A Beginner’s Guide to Digital Trust</h3>
-    <p>
-       Blockchain is transforming finance, security, and the internet itself.
-    </p>
-    <div class="blog-footer">
-        <span class="blog-author">
-            <i class="fas fa-circle-user"></i> Rajesh
-        </span>
-        <a href="https://codewithminunextgen.github.io/blogsall/what-is-blockchain.html" class="blog-link">
-            Read <i class="fas fa-arrow-right"></i>
-        </a>
+      <section class="blog-section">
+
+  <!-- <div class="blog-header">
+    <span class="blog-tag">Latest Blogs</span>
+    <h2>Insights & Resources for Web & Crypto</h2>
+    <p>Explore tips, strategies, and guides to grow your online business and crypto knowledge.</p>
+  </div> -->
+
+  <div class="blog-container">
+
+    <div class="blog-card">
+      <div class="blog-image">
+        <img src="images/blog1.png" alt="Website Development Blog">
+      </div>
+
+      <div class="blog-content">
+        <span class="blog-date">07 Mar 2026</span>
+        <h3>Website Development in Panipat?</h3>
+        <p>Discover the latest tools, frameworks, and techniques to build cutting-edge websites.</p>
+        <a href="#">Read More →</a>
+      </div>
     </div>
-</div>
-            </div>
-            <!-- card 2: android -->
-            <div class="blog-card">
-                <div class="blog-image">
-                    <i class="fab fa-android"></i>
-                </div>
-                <div class="blog-content">
-                    <span class="blog-date">📅 Apr 28, 2025</span>
-                    <h3>Material You: designing for Android 14</h3>
-                    <p>Best practices for dynamic theming and adaptive layouts that delight users.</p>
-                    <div class="blog-footer">
-                        <span class="blog-author"><i class="fas fa-circle-user"></i> Priya</span>
-                        <a href="#" class="blog-link">Read <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </div>
-            </div>
-            <!-- card 3: seo -->
-            <div class="blog-card">
-                <div class="blog-image">
-                    <i class="fas fa-chart-line"></i>
-                </div>
-                <div class="blog-content">
-                    <span class="blog-date">📅 Apr 20, 2025</span>
-                    <h3>SEO in 2025: helpful content wins</h3>
-                    <p>How EEAT and user intent are changing the game — and how to adapt your strategy.</p>
-                    <div class="blog-footer">
-                        <span class="blog-author"><i class="fas fa-circle-user"></i> Ankit</span>
-                        <a href="#" class="blog-link">Read <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </div>
-            </div>
-            <!-- card 4: digital marketing -->
-            <div class="blog-card">
-                <div class="blog-image">
-                    <i class="fas fa-bullhorn"></i>
-                </div>
-                <div class="blog-content">
-                    <span class="blog-date">📅 Apr 12, 2025</span>
-                    <h3>Short‑form video: roi hacks</h3>
-                    <p>Reels, shorts and tikok — how to turn 15 seconds into high conversion rates.</p>
-                    <div class="blog-footer">
-                        <span class="blog-author"><i class="fas fa-circle-user"></i> Neha</span>
-                        <a href="#" class="blog-link">Read <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </div>
-            </div>
-            <!-- card 5: blockchain -->
-            <div class="blog-card">
-                <div class="blog-image">
-                    <i class="fas fa-link"></i>
-                </div>
-                <div class="blog-content">
-                    <span class="blog-date">📅 Apr 5, 2025</span>
-                    <h3>Smart contract auditing 101</h3>
-                    <p>Common vulnerabilities and how we secure DeFi protocols before launch.</p>
-                    <div class="blog-footer">
-                        <span class="blog-author"><i class="fas fa-circle-user"></i> Arjun</span>
-                        <a href="#" class="blog-link">Read <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </div>
-            </div>
-            <!-- card 6: web3 -->
-            <div class="blog-card">
-                <div class="blog-image">
-                    <i class="fas fa-cubes"></i>
-                </div>
-                <div class="blog-content">
-                    <span class="blog-date">📅 Mar 28, 2025</span>
-                    <h3>Scaling dApps with L2 solutions</h3>
-                    <p>Arbitrum, Optimism, and zkSync — a practical guide for developers.</p>
-                    <div class="blog-footer">
-                        <span class="blog-author"><i class="fas fa-circle-user"></i> Meera</span>
-                        <a href="#" class="blog-link">Read <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </div>
-            </div>
-        </div>
+
+    <div class="blog-card">
+      <div class="blog-image">
+        <img src="images/blog2.png" alt="Crypto Investment Blog">
+      </div>
+
+      <div class="blog-content">
+        <span class="blog-date">15 Feb 2026</span>
+        <h3>Beginner’s Guide to Crypto Investing</h3>
+        <p>Learn how to start investing in cryptocurrency safely and effectively.</p>
+        <a href="#">Read More →</a>
+      </div>
+    </div>
+
+    <div class="blog-card">
+      <div class="blog-image">
+        <img src="images/blog3.png" alt="Website SEO Blog">
+      </div>
+
+      <div class="blog-content">
+        <span class="blog-date">10 Feb 2026</span>
+        <h3>SEO Tips for Your Website in 2026</h3>
+        <p>Boost your site’s search ranking and attract more organic traffic with these strategies.</p>
+        <a href="#">Read More →</a>
+      </div>
+    </div>
+
+     <div class="blog-card">
+      <div class="blog-image">
+        <img src="images/blog1.png" alt="Website Development Blog">
+      </div>
+
+      <div class="blog-content">
+        <span class="blog-date">20 Feb 2026</span>
+        <h3>Top 5 Web Development Trends in 2026</h3>
+        <p>Discover the latest tools, frameworks, and techniques to build cutting-edge websites.</p>
+        <a href="#">Read More →</a>
+      </div>
+    </div>
+
+    <div class="blog-card">
+      <div class="blog-image">
+        <img src="images/blog2.png" alt="Crypto Investment Blog">
+      </div>
+
+      <div class="blog-content">
+        <span class="blog-date">15 Feb 2026</span>
+        <h3>Beginner’s Guide to Crypto Investing</h3>
+        <p>Learn how to start investing in cryptocurrency safely and effectively.</p>
+        <a href="#">Read More →</a>
+      </div>
+    </div>
+
+    <div class="blog-card">
+      <div class="blog-image">
+        <img src="images/blog3.png" alt="Website SEO Blog">
+      </div>
+
+      <div class="blog-content">
+        <span class="blog-date">10 Feb 2026</span>
+        <h3>SEO Tips for Your Website in 2026</h3>
+        <p>Boost your site’s search ranking and attract more organic traffic with these strategies.</p>
+        <a href="#">Read More →</a>
+      </div>
+    </div>
+
+  </div>
+
+</section> 
 
         <!-- attractive newsletter CTA (keeps theme) -->
         <div class="newsletter-box">
